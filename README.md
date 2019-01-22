@@ -1,4 +1,9 @@
-# README
+
+
+[![Codeship Status for RajinTech/podcastReview](https://app.codeship.com/projects/08f81bd0-009f-0137-f2c8-3ab166e74c3b/status?branch=master)](/projects/324701)
+
+# Podcast Review
+
 name: Podcast Review  
 authors:  
 Anthony Rosato
