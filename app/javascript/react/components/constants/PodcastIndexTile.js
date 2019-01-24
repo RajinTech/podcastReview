@@ -1,8 +1,19 @@
 import React from 'react';
 
 const PodcastIndexTile = props => {
+  let creators = props.creators.map((creator, index) => {
+    return(
+      <div key={index} className="podcast-detail">
+        {creator}
+      </div>
+    )
+  })
+
   return (
-    <h1>{props.title}</h1>
+    <div>
+      <h2 className="podcast-title">{props.title}</h2>
+      {creators}
+    </div>
   )
 }
 
