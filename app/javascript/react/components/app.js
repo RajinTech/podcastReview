@@ -1,7 +1,14 @@
 import React from 'react'
+import { Router, Route, IndexRoute } from 'react-router';
+import { createBrowserHistory } from 'history'
+import IndexContainer from './containers/IndexContainer'
 
-export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+const App = props => {
+  return(
+    <Router history={createBrowserHistory()}>
+      <Route path='/' component={IndexContainer}/>
+    </Router>
+  )
 }
 
 export default App
