@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PodcastIndexTile from '../constants/PodcastIndexTile'
 
-class IndexContainer extends Component {
+class PodcastIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +25,7 @@ class IndexContainer extends Component {
       return (
         <PodcastIndexTile
           key={podcast.id}
+          id={podcast.id}
           title={podcast.title}
           creators={podcast.creators}
         />
@@ -39,4 +40,4 @@ class IndexContainer extends Component {
   }
 }
 
-export default IndexContainer
+export default PodcastIndexContainer

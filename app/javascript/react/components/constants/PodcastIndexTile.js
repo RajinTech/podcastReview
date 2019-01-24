@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PodcastIndexTile = props => {
   let creators = props.creators.map((creator, index) => {
@@ -11,7 +12,7 @@ const PodcastIndexTile = props => {
 
   return (
     <div>
-      <h2 className="podcast-title">{props.title}</h2>
+      <Link to={`/podcast/${props.id}`} className="podcast-title">{props.title}</Link>
       {creators}
     </div>
   )
