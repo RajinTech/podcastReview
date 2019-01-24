@@ -1,5 +1,5 @@
 class PodcastSerializer < ActiveModel::Serializer
-  attributes :title, :creators
+  attributes :id, :title, :creators
 
   def creators
     object.creators.pluck(:name)

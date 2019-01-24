@@ -9,9 +9,32 @@ class IndexContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch("/api/v1/podcasts.json")
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({podcasts: responseData})
+      })
+      .catch((error) => {
+        throw error
+      })
+  }
+
   render() {
+    let podcasts = this.state.podcasts.map((podcast) => {
+      return (
+        <PodcastIndexTile
+          key={podcast.id}
+          title={podcast.title}
+          creators={podcast.creators}
+        />
+      )
+    })
+
     return(
-      <PodcastIndexTile />
+      <div>
+        {podcasts}
+      </div>
     )
   }
 }

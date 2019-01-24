@@ -2,7 +2,7 @@ import React from 'react';
 
 const PodcastIndexTile = props => {
   return (
-    <h1>Hello from a podcast</h1>
+    <h1>{props.title}</h1>
   )
 }
 
