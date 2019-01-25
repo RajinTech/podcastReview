@@ -11,4 +11,4 @@ CarrierWave.configure do |config|
       config.fog_directory  = ENV["podcast-review-development"]
     end
   end
-endNT_S3_BUCKET=podcast-review-development
+end
