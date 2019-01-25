@@ -15,7 +15,6 @@ class PodcastIndexContainer extends Component {
       .then((responseData) => {
         // debugger
         this.setState({podcasts: responseData})
-        console.log(responseData);
       })
       .catch((error) => {
         throw error

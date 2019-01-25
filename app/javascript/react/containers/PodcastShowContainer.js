@@ -9,7 +9,7 @@ class PodcastShowContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/podcasts/${this.props.match.params.id}`)
+    fetch(`/api/v1/podcasts/${this.props.params.id}`)
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({ podcast: responseData })

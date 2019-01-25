@@ -1,12 +1,12 @@
 import PodcastIndexContainer from '../../../app/javascript/react/containers/PodcastIndexContainer.js'
 import PodcastIndexTile from '../../../app/javascript/react/components/PodcastIndexTile.js'
-import { Router } from 'react-router'
+// import { Router } from 'react-router'
 import fetchMock from 'fetch-mock'
 import { mount } from 'enzyme'
 import jasmineEnzyme from 'jasmine-enzyme'
 
 
-describe('PodcastIndexTile', () => {
+describe('PodcastIndexContainer', () => {
   let wrapper, podcasts
   beforeEach(() => {
     jasmineEnzyme()
@@ -23,10 +23,9 @@ describe('PodcastIndexTile', () => {
       body: podcasts
     })
 
-    wrapper = shallow(
+    wrapper = mount(
       <PodcastIndexContainer />
     );
-    console.log(wrapper);
   });
 
   afterEach(fetchMock.restore)
@@ -37,10 +36,7 @@ describe('PodcastIndexTile', () => {
 
   it('renders podcast tiles after api call', (done) => {
     setTimeout(() => {
-      console.log(wrapper.state()["podcasts"]);
-      console.log(wrapper.filter(PodcastIndexTile).params)
-
-      expect(wrapper.filter(PodcastIndexTile).exists()).toEqual(true)
+      expect(wrapper.find(PodcastIndexTile)).toBePresent();
       done()
     }, 0)
   })

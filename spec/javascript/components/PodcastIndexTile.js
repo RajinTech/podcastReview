@@ -2,7 +2,7 @@ import PodcastIndexTile from '../../../app/javascript/react/components/PodcastIn
 import { mount } from 'enzyme'
 import jasmineEnzyme from 'jasmine-enzyme'
 import React from 'react'
-import { Router } from 'react-router'
+import { Router, Link } from 'react-router'
 
 describe('PodcastIndexTile', () => {
   let wrapper,
@@ -14,14 +14,14 @@ describe('PodcastIndexTile', () => {
 
   beforeEach(() => {
     wrapper = mount(
-      <Router>
+      // <Router>
         <PodcastIndexTile
           key={podcast.id}
           id={podcast.id}
           title={podcast.title}
           creators={podcast.creators}
         />
-      </Router>
+      // </Router>
     );
   });
 
