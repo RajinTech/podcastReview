@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PodcastIndexTile from '../constants/PodcastIndexTile'
+import PodcastIndexTile from '../components/PodcastIndexTile'
 
 class PodcastIndexContainer extends Component {
   constructor(props) {
@@ -13,7 +13,9 @@ class PodcastIndexContainer extends Component {
     fetch("/api/v1/podcasts.json")
       .then((response) => response.json())
       .then((responseData) => {
+        // debugger
         this.setState({podcasts: responseData})
+        console.log(responseData);
       })
       .catch((error) => {
         throw error
