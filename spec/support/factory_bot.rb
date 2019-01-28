@@ -7,8 +7,8 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
-  factory :podcast do |n|
-    title { "Cool Podcast #{n}" }
+  factory :podcast do
+    sequence(:title) {|n| "Cool Podcast #{n}" }
     description { "It's a cool podcast" }
     url { "coolpodcast.com" }
     availability { "yesnomaybe" }
@@ -16,7 +16,7 @@ FactoryBot.define do
   end
 
   factory :creator do |n|
-    name { "Tyler #{n}" }
+    sequence(:name) {|n| "Tyler #{n}" }
     # association :podcast
   end
 
