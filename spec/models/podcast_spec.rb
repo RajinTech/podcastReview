@@ -22,11 +22,6 @@ RSpec.describe Podcast, type: :model do
       subject.url = nil
       expect(subject).to_not be_valid
     end
-
-    it "is invalid without a availability" do
-      subject.availability = nil
-      expect(subject).to_not be_valid
-    end
   end
 
   describe "associations:" do

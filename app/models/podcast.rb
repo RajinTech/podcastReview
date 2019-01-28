@@ -5,5 +5,4 @@ class Podcast < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :url, presence: true
-  validates :availability, presence: true
 end

@@ -11,9 +11,11 @@ const PodcastIndexTile = props => {
   })
 
   return (
-    <div>
-      <Link to={`/podcasts/${props.id}`} className="podcast-title">{props.title}</Link>
-      {creators}
+    <div className="panel small-4 columns">
+      <div>
+        <Link to={`/podcasts/${props.id}`} className="podcast-title">{props.title}</Link>
+        {creators}
+      </div>
     </div>
   )
 }

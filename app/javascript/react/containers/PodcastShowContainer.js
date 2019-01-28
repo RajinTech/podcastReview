@@ -22,11 +22,15 @@ class PodcastShowContainer extends Component {
   render() {
     return(
       <div>
-        <h1>{this.state.podcast.title}</h1>
-        <h3>Creators: {this.state.podcast.creators}</h3>
-        <h3>Description: {this.state.podcast.description}</h3>
-        <h3>URL: {this.state.podcast.url}</h3>
-        <h3>Availability: {this.state.podcast.availability}</h3>
+        <div className="row-one"></div>
+        <div className="row">
+          <div className="panel">
+            <h1><a href={this.state.podcast.url} target="_blank">{this.state.podcast.title}</a></h1>
+            <h3>Creators: {this.state.podcast.creators}</h3>
+            <h3>Description: {this.state.podcast.description}</h3>
+            <h3>Availability: {this.state.podcast.availability}</h3>
+          </div>
+        </div>
       </div>
     )
   }
