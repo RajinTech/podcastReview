@@ -7,6 +7,5 @@ class CreatePodcasts < ActiveRecord::Migration[5.2]
       t.string :availability, null:false
       t.timestamps
     end
-
   end
 end
