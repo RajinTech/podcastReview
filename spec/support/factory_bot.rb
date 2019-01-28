@@ -17,7 +17,7 @@ FactoryBot.define do
 
   factory :creator do |n|
     name { "Tyler #{n}" }
-    #association :podcast
+    # association :podcast
   end
 
 end

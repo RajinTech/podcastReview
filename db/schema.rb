@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2019_01_28_151030) do
     t.string "title", null: false
     t.string "description", null: false
     t.string "url", null: false
-    t.string "availability", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "availability"
   end
 
   create_table "reviews", force: :cascade do |t|
