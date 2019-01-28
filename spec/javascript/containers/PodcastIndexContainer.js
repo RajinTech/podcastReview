@@ -1,26 +1,25 @@
 import PodcastIndexContainer from '../../../app/javascript/react/containers/PodcastIndexContainer.js'
 import PodcastIndexTile from '../../../app/javascript/react/components/PodcastIndexTile.js'
-// import { Router } from 'react-router'
 import fetchMock from 'fetch-mock'
 import { mount } from 'enzyme'
 import jasmineEnzyme from 'jasmine-enzyme'
 
 
 describe('PodcastIndexContainer', () => {
-  let wrapper, podcasts
+  let wrapper
+
   beforeEach(() => {
     jasmineEnzyme()
-    podcasts = [
-      {
-        id: 1,
-        title: 'PodCat',
-        creators: ['Tyler', 'Bob']
-      }
-    ]
 
     fetchMock.get('/api/v1/podcasts.json', {
       status: 200,
-      body: podcasts
+      body: [
+        {
+          id: 1,
+          title: 'PodCat',
+          creators: ['Tyler', 'Bob']
+        }
+      ]
     })
 
     wrapper = mount(

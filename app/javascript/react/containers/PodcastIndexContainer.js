@@ -13,7 +13,6 @@ class PodcastIndexContainer extends Component {
     fetch("/api/v1/podcasts.json")
       .then((response) => response.json())
       .then((responseData) => {
-        // debugger
         this.setState({podcasts: responseData})
       })
       .catch((error) => {
