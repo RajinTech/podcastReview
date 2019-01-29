@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PodcastReviews</title>
+  <title>PodCats</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 
   <%= javascript_include_tag "vendor/modernizr" %>
 
@@ -13,22 +14,30 @@
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">PodcastReviews</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
+  <nav>
+    <section class="nav-section">
+      <div id="logo-container">
+        <%= link_to image_tag("logo.png", id: "logo"), root_path %>
+      </div>
+    </section>
+    <section class="nav-section">
+      <div id="name">
+        <h1><%= link_to "PodCats", root_path %></h1>
+      </div>
+    </section>
+    <section class="nav-section-right">
+      <%- if current_user %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <div class="nav-button">Sign Out</div>
+        <% end %>
+      <%- else -%>
+        <%= link_to new_user_registration_path do %>
+          <div class="nav-button">Sign Up</div>
+        <% end %>
+        <%= link_to new_user_session_path do %>
+          <div class="nav-button">Sign In</div>
+        <% end %>
+      <%- end -%>
     </section>
   </nav>
 
