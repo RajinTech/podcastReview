@@ -7,17 +7,24 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
-  factory :podcast do |n|
-    title { "Cool Podcast #{n}" }
+  factory :podcast do
+    sequence(:title) {|n| "Cool Podcast #{n}" }
     description { "It's a cool podcast" }
     url { "coolpodcast.com" }
-    availability { "yesnomaybe" }
     #association :creator
   end
 
   factory :creator do |n|
-    name { "Tyler #{n}" }
-    #association :podcast
+    sequence(:name) {|n| "Tyler #{n}" }
+    # association :podcast
   end
 
+  factory :review do |n|
+    sequence(:rating) { |n| n }
+    sequence(:binge_val) { |n| n }
+    sequence(:educational_val) { |n| n}
+    sequence(:entertainment_val) { |n| n }
+    comment { "great podcast" }
+    association :user
+  end
 end
