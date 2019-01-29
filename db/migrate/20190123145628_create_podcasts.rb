@@ -4,7 +4,6 @@ class CreatePodcasts < ActiveRecord::Migration[5.2]
       t.string :title, null:false
       t.string :description, null:false
       t.string :url, null:false
-      t.string :availability, null:false
       t.timestamps
     end
 

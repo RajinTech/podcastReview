@@ -16,7 +16,6 @@ describe('PodcastShowContainer', () => {
       title: 'PodCat',
       description: 'cool podcast',
       url: 'http://google.com',
-      availability: 'yes',
       creators: ['Tyler', 'Bob']
     }
 
@@ -53,8 +52,7 @@ describe('PodcastShowContainer', () => {
       expectIncludes(wrapper, podcast.title)
       expectIncludes(wrapper, podcast.description)
       expectIncludes(wrapper, podcast.url)
-      expectIncludes(wrapper, podcast.availability)
-      expectIncludes(wrapper, podcast.creators.join(''))
+      expectIncludes(wrapper,  podcast.creators.join(''))
       done()
     }, 0)
   })

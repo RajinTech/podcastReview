@@ -11,7 +11,6 @@ FactoryBot.define do
     title { "Cool Podcast #{n}" }
     description { "It's a cool podcast" }
     url { "coolpodcast.com" }
-    availability { "yesnomaybe" }
     #association :creator
   end
 
