@@ -19,4 +19,12 @@ FactoryBot.define do
     # association :podcast
   end
 
+  factory :review do |n|
+    sequence(:rating) { |n| n }
+    sequence(:binge_val) { |n| n }
+    sequence(:educational_val) { |n| n}
+    sequence(:entertainment_val) { |n| n }
+    comment { "great podcast" }
+    association :user
+  end
 end

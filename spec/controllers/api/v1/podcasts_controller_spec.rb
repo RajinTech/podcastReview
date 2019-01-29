@@ -33,8 +33,7 @@ RSpec.describe Api::V1::PodcastsController, type: :controller do
           "title" => "Cool Podcast #{id}",
           "creators" => ["Tyler #{id}"],
           "description" => "It's a cool podcast",
-          "url" => "coolpodcast.com",
-          "availability" => "yesnomaybe"
+          "url" => "coolpodcast.com"
         }
       )
     end

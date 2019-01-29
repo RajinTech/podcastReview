@@ -11,7 +11,6 @@ class PodcastShowContainer extends Component {
     }
   }
 
-
   componentDidMount() {
     fetch(`/api/v1/podcasts/${this.props.params.id}`)
       .then((response) => response.json())
@@ -26,7 +25,6 @@ class PodcastShowContainer extends Component {
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({ reviews: responseData })
-        console.log(this.state.reviews);
       })
       .catch((error) => {
         throw error
