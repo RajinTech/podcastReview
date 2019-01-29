@@ -1,3 +1,32 @@
+@import '_colors';
+
 .row-one {
   margin-top: 1rem;
+}
+
+.content-tile {
+  border-radius: 12px;
+
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+}
+
+.content-tile h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.content-tile a {
+  padding: 1px 4px;
+  margin-left: -4px;
+  border-radius: 6px;
+  color: $mine-shaft;
+}
+
+.content-tile a:hover {
+  background-color: $quarter-pearl-lusta;
+}
+
+.content-tile h2 {
+  font-size: 1.1rem;
 }
