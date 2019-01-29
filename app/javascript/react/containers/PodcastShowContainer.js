@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReviewTile from '../components/ReviewTile'
-
+import { Link } from 'react-router';
 class PodcastShowContainer extends Component {
   constructor(props) {
     super(props);
@@ -69,6 +69,11 @@ class PodcastShowContainer extends Component {
             <h3>Creators: {this.state.creators}</h3>
             <h3>Description: {this.state.podcast.description}</h3>
             <h3>URL: {this.state.podcast.url}</h3>
+          </div>
+          <div>
+            <Link to={`/podcasts/${this.props.params.id}/new`}>
+              Add a new review for {this.state.podcast.title}
+            </Link>
           </div>
           <div>
             <h1>Reviews</h1>
