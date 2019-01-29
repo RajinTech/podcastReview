@@ -13,22 +13,36 @@ class PodcastShowContainer extends Component {
 
   componentDidMount() {
     fetch(`/api/v1/podcasts/${this.props.params.id}`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({ podcast: responseData });
         this.setState({ creators: this.state.podcast.creators.join(', ') });
       })
-      .catch((error) => {
-        throw error
-      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
     fetch(`/api/v1/reviews/${this.props.params.id}`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({ reviews: responseData })
       })
-      .catch((error) => {
-        throw error
-      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
