@@ -6,6 +6,8 @@
 
 .content-tile {
   border-radius: 12px;
+  border: 2px $boulder solid;
+  background-color: $alto;
 
   animation-name: fade-in;
   animation-duration: 0.5s;
