@@ -1,4 +1,4 @@
-class PodcastReviewsSerializer < ActiveModel::Serializer
+class ReviewSerializer < ActiveModel::Serializer
   attributes :id, :rating, :comment, :scores, :vote_total
 
   def scores
