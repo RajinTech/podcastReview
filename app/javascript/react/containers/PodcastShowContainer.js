@@ -9,7 +9,6 @@ class PodcastShowContainer extends Component {
       reviews: [],
       creators: ""
     }
-    this.vote = this.vote.bind(this)
   }
 
   componentDidMount() {
@@ -46,28 +45,21 @@ class PodcastShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  vote() {
-    fetch(`api/v1/reviews/`, {method: "post"})
-      .then(response => {
-        console.log("ok");
-      })
-      .catch(error => {
-        console.error(`Error while attempting to vote: ${error.message}`)
-      })
-  }
-
   render() {
     let ratings = this.state.reviews.map(review => {
       return(
         <ReviewTile
           key={review.id}
+          id={review.id}
+          podcastId={this.props.params.id}
           rating={review.rating}
           bingeVal={review.scores.binge}
           educationVal={review.scores.educational}
           entertainmentVal={review.scores.entertainment}
           totalScore={review.scores.binge+review.scores.educational+review.scores.entertainment}
           comment={review.comment}
-          voteTotal={review.vote_total}
+          totalVotes={review.total_votes}
+          userVote={review.user_vote}
         />
       )
     })
