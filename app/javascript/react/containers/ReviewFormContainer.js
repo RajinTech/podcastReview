@@ -55,6 +55,7 @@ class ReviewFormContainer extends Component {
     formPayload["review"]["user_id"] = 1
     console.log(formPayload);
     console.log(this.props.params);
+    console.log(this.props.location);
     fetch(`/podcasts/${this.props.params.id}/reviews`, {
       credentials: 'same-origin',
       method: 'POST',
@@ -84,10 +85,11 @@ class ReviewFormContainer extends Component {
     return(
       <div className="row">
         <br></br>
-        <h3>Submit a Review</h3>
+        <h3>Submit a New Review for {this.props.location.state.title}</h3>
         <form onSubmit={this.handleSubmit} className="panel">
+
           <RatingField
-            label="Rating"
+            label="Overall Rating"
             name="rating"
             onChange={this.handleRatingChange}
             value={this.state.rating}
@@ -111,7 +113,7 @@ class ReviewFormContainer extends Component {
             value={this.state.entertainment_val}
             />
           <TextField
-            label="Comment"
+            label="Comment:"
             name="comment"
             onChange={this.handleTextChange}
             value={this.state.comment}

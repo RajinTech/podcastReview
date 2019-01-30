@@ -72,7 +72,8 @@ class PodcastShowContainer extends Component {
           </div>
           <div>
             <Link
-              to={`/podcasts/${this.props.params.id}/reviews/new`}>
+              to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
+              state: { title: this.state.podcast.title }} }>
               Add a new review for {this.state.podcast.title}
             </Link>
           </div>
