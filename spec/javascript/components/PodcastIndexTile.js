@@ -1,19 +1,19 @@
 import PodcastIndexTile from '../../../app/javascript/react/components/PodcastIndexTile.js'
-import { mount } from 'enzyme'
-// import jasmineEnzyme from 'jasmine-enzyme'
+import { shallow } from 'enzyme'
 import React from 'react'
 import { Link } from 'react-router'
+import jasmineEnzyme from 'jasmine-enzyme'
 
 describe('PodcastIndexTile', () => {
   let wrapper,
       podcast = {
         id: 1,
         title: 'PodCat',
-        creators: ['Tyler', 'Bob']
+        creators: ["Tyler", "Bob"]
       }
 
   beforeEach(() => {
-    wrapper = mount(
+    wrapper = shallow(
       <PodcastIndexTile
         key={podcast.id}
         id={podcast.id}
@@ -23,14 +23,20 @@ describe('PodcastIndexTile', () => {
     );
   });
 
-  it('should render prop title as a link', () => {
-    expect(wrapper.find(Link).props().children).toBe('PodCat')
-    expect(wrapper.find(Link).props().to).toBe('/podcasts/1')
+  describe("should render a <Link>", () => {
+    it("that has prop \'title\' as text", () => {
+      expect(wrapper.find(Link).props().children).toBe('PodCat')
+    })
+
+    it("to the podcast's show page", () => {
+      expect(wrapper.find(Link).props().to).toBe('/podcasts/1')
+    })
   })
 
-  it('should render prop creators', () => {
-    expect(wrapper.text().includes('Tyler')).toEqual(true)
-    expect(wrapper.text().includes('Bob')).toEqual(true)
+  it('should render prop \'creators\'', () => {
+    expect(wrapper.containsMatchingElement(
+      <h2>By Tyler and Bob</h2>
+    )).toEqual(true)
   })
 
 });

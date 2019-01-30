@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const PodcastIndexTile = (props) => {
-  let creators = props.creators
+  let creators = props.creators.slice(0)
   let last_creator = creators.pop()
   let creators_str
   if (creators.length > 0) {
