@@ -1,4 +1,4 @@
-class Api::V1::ReviewsController < ApplicationController
+class Api::V1::ReviewsController < ApiController
   def index
     begin
       render json: Review.where({podcast: Podcast.find(params["podcast_id"])}), each_serializer: ReviewSerializer

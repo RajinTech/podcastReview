@@ -1,4 +1,4 @@
-class Api::V1::PodcastsController < ApplicationController
+class Api::V1::PodcastsController < ApiController
   def index
     render json: Podcast.all
   end
