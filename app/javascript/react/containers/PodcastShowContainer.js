@@ -29,7 +29,7 @@ class PodcastShowContainer extends Component {
         this.setState({ creators: this.state.podcast.creators.join(', ') });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-    fetch(`/api/v1/reviews/${this.props.params.id}`)
+    fetch(`/api/v1/reviews?podcast_id=${this.props.params.id}`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -47,7 +47,13 @@ class PodcastShowContainer extends Component {
   }
 
   vote() {
-
+    fetch(`api/v1/reviews/`, {method: "post"})
+      .then(response => {
+        console.log("ok");
+      })
+      .catch(error => {
+        console.error(`Error while attempting to vote: ${error.message}`)
+      })
   }
 
   render() {
