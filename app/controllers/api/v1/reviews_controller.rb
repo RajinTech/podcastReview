@@ -7,6 +7,6 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
   def show
-    render json: Review.where({podcast: Podcast.find(params["id"])}), each_serializer: PodcastReviewsSerializer
+    render json: Review.find(params["id"])
   end
 end
