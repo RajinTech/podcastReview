@@ -13,6 +13,7 @@ describe('PodcastIndexTile', () => {
       }
 
   beforeEach(() => {
+    jasmineEnzyme()
     wrapper = shallow(
       <PodcastIndexTile
         key={podcast.id}
@@ -25,6 +26,7 @@ describe('PodcastIndexTile', () => {
 
   describe("should render a <Link>", () => {
     it("that has prop \'title\' as text", () => {
+      console.log(wrapper.debug());
       expect(wrapper.find(Link).props().children).toBe('PodCat')
     })
 
