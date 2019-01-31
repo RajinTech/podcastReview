@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :rating, :comment, :scores, :total_votes, :user_vote
+  attributes :id, :rating, :comment, :scores, :total_votes, :user_vote, :edit_permission
 
   def scores
     return(
@@ -27,6 +27,17 @@ class ReviewSerializer < ActiveModel::Serializer
       rescue NoMethodError
         return 0
       end
+    end
+  end
+
+  def edit_permission
+    if current_user.nil?
+      return false
+    end
+    if current_user.role === "admin" || object.user_id === current_user.id
+      return true
+    else
+      false
     end
   end
 end

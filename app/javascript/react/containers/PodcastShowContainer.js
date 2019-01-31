@@ -9,6 +9,8 @@ class PodcastShowContainer extends Component {
       reviews: [],
       creators: ""
     }
+    this.fetchReviews = this.fetchReviews.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   componentDidMount() {
@@ -28,6 +30,10 @@ class PodcastShowContainer extends Component {
         this.setState({ creators: this.state.podcast.creators.join(', ') });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
+    this.fetchReviews()
+  }
+
+  fetchReviews() {
     fetch(`/api/v1/reviews?podcast_id=${this.props.params.id}`)
       .then(response => {
         if (response.ok) {
@@ -45,6 +51,11 @@ class PodcastShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  deleteReview() {
+    // fetch(`/api/v1/reviews/`)
+    fetchReviews()
+  }
+
   render() {
     let ratings = this.state.reviews.map(review => {
       return(
@@ -60,6 +71,7 @@ class PodcastShowContainer extends Component {
           comment={review.comment}
           totalVotes={review.total_votes}
           userVote={review.user_vote}
+          editPermission={review.edit_permission}
         />
       )
     })

@@ -20,7 +20,7 @@ class ReviewTile extends Component {
       }
     }
 
-    fetch(`/reviews/${this.props.id}/votes`, {
+    fetch(`/api/v1/reviews/${this.props.id}/votes`, {
       'method': "post",
       'headers': {
         'Accept': 'application/json',
@@ -72,6 +72,20 @@ class ReviewTile extends Component {
   }
 
   render() {
+    let editButtons = () => {
+      if (this.props.editPermission) {
+        return(
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        )
+      }
+      else {
+        return(null)
+      }
+    }
+
     return(
       <div className="panel">
         <div>
@@ -85,6 +99,7 @@ class ReviewTile extends Component {
           <h3>Entertainment Value: {this.props.entertainmentVal}</h3>
           <h3>Overall Value: {this.props.totalScore}</h3>
           <h3>Comment: {this.props.comment}</h3>
+          {editButtons()}
         </div>
       </div>
     )

@@ -5,14 +5,13 @@ Rails.application.routes.draw do
   root 'podcasts#index'
 
   resources :podcasts, only: [:index, :show]
-  resources :reviews do
-    resources :votes, only: [:create]
-  end
 
   namespace 'api' do
     namespace 'v1' do
       resources :podcasts, only: [:index, :show]
-      resources :reviews, only: [:index, :show]
+      resources :reviews, only: [:index, :show, :delete] do
+        resources :votes, only: [:create]
+      end
     end
   end
 
