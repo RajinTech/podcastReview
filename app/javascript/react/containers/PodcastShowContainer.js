@@ -28,7 +28,7 @@ class PodcastShowContainer extends Component {
         this.setState({ creators: this.state.podcast.creators.join(', ') });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-    fetch(`/api/v1/reviews/${this.props.params.id}`)
+    fetch(`/api/v1/reviews?podcast_id=${this.props.params.id}`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -46,16 +46,20 @@ class PodcastShowContainer extends Component {
   }
 
   render() {
-
     let ratings = this.state.reviews.map(review => {
       return(
         <ReviewTile
           key={review.id}
+          id={review.id}
+          podcastId={this.props.params.id}
           rating={review.rating}
-          bingeVal={review.binge_val}
-          educationVal={review.educational_val}
-          entertainmentVal={review.entertainment_val}
+          bingeVal={review.scores.binge}
+          educationVal={review.scores.educational}
+          entertainmentVal={review.scores.entertainment}
+          totalScore={review.scores.binge+review.scores.educational+review.scores.entertainment}
           comment={review.comment}
+          totalVotes={review.total_votes}
+          userVote={review.user_vote}
         />
       )
     })
