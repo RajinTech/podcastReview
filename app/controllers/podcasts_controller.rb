@@ -1,5 +1,7 @@
 class PodcastsController < ApplicationController
   def index
-    @podcasts = Podcast.all
+  end
+
+  def show
   end
 end
