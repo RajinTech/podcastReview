@@ -90,9 +90,9 @@ class PodcastShowContainer extends Component {
       let onClickDelete = () => {this.deleteReview(review.id)}
       let contents = {
         rating: review.rating,
-        bingeVal: review.scores.binge,
-        educationalVal: review.scores.educational,
-        entertainmentVal: review.scores.entertainment,
+        binge_val: review.scores.binge,
+        educational_val: review.scores.educational,
+        entertainment_val: review.scores.entertainment,
         comment: review.comment
       }
 

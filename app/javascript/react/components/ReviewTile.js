@@ -123,9 +123,9 @@ class ReviewTile extends Component {
             <h2>User Voted: {this.state.userVote}</h2>
             <h2>Vote Total: {this.state.totalVotes}</h2>
             <h3>Rating: {this.props.contents.rating}</h3>
-            <h3>Binge Value: {this.props.contents.bingeVal}</h3>
-            <h3>Education Value: {this.props.contents.educationalVal}</h3>
-            <h3>Entertainment Value: {this.props.contents.entertainmentVal}</h3>
+            <h3>Binge Value: {this.props.contents.binge_val}</h3>
+            <h3>Education Value: {this.props.contents.educational_val}</h3>
+            <h3>Entertainment Value: {this.props.contents.entertainment_val}</h3>
             <h3>Overall Value: {this.props.totalScore}</h3>
             <h3>Comment: {this.props.contents.comment}</h3>
             {editButtons()}

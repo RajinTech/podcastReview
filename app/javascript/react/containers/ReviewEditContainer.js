@@ -30,19 +30,19 @@ class ReviewEditContainer extends ReviewFormContainer {
             label="Bingeability"
             name="binge_val"
             onChange={this.handleBingeValChange}
-            value={this.state.bingeVal}
+            value={this.state.binge_val}
             />
           <RatingField
             label="Educational Value"
             name="educational_val"
             onChange={this.handleEducationalValChange}
-            value={this.state.educationalVal}
+            value={this.state.educational_val}
             />
           <RatingField
             label="Entertainment Value"
             name="entertainment_val"
             onChange={this.handleEntertainmentValChange}
-            value={this.state.entertainmentVal}
+            value={this.state.entertainment_val}
             />
           <TextField
             label="Comment:"

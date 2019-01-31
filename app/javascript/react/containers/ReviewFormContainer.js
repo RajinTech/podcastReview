@@ -8,9 +8,9 @@ class ReviewFormContainer extends Component {
     super(props);
     this.state = {
       rating: 5,
-      bingeVal: 5,
-      educationalVal: 5,
-      entertainmentVal: 5,
+      binge_val: 5,
+      educational_val: 5,
+      entertainment_val: 5,
       comment: ""
     }
     this.handleTextChange = this.handleTextChange.bind(this)
@@ -30,23 +30,21 @@ class ReviewFormContainer extends Component {
     this.setState({ rating: newRating })
   }
   handleBingeValChange(event) {
-    let newBingeVal = event.target.value
-    this.setState({ bingeVal: newBingeVal })
+    let newbinge_val = event.target.value
+    this.setState({ binge_val: newbinge_val })
   }
   handleEducationalValChange(event) {
     let newEducationVal = event.target.value
-    this.setState({ educationalVal: newEducationVal })
+    this.setState({ educational_val: newEducationVal })
   }
   handleEntertainmentValChange(event) {
-    let newEntertainmentVal = event.target.value
-    this.setState({ entertainmentVal: newEntertainmentVal })
+    let newentertainment_val = event.target.value
+    this.setState({ entertainment_val: newentertainment_val })
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    let formPayload = {
-      review: this.state
-    };
+    let formPayload = this.state;
     formPayload["review"]["podcast_id"] = parseInt(this.props.params.id);
     formPayload["review"]["user_id"] = 1
     fetch(`/podcasts/${this.props.params.id}/reviews`, {
@@ -88,21 +86,21 @@ class ReviewFormContainer extends Component {
             />
           <RatingField
             label="Bingeability"
-            name="bingeVal"
+            name="binge_val"
             onChange={this.handleBingeValChange}
-            value={this.state.bingeVal}
+            value={this.state.binge_val}
             />
           <RatingField
             label="Educational Value"
-            name="educationalVal"
+            name="educational_val"
             onChange={this.handleEducationalValChange}
-            value={this.state.educationalVal}
+            value={this.state.educational_val}
             />
           <RatingField
             label="Entertainment Value"
-            name="entertainmentVal"
+            name="entertainment_val"
             onChange={this.handleEntertainmentValChange}
-            value={this.state.entertainmentVal}
+            value={this.state.entertainment_val}
             />
           <TextField
             label="Comment"
