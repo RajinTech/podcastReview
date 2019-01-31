@@ -27,5 +27,7 @@ RSpec.describe Podcast, type: :model do
 
   describe "associations:" do
     it { should have_many(:creators).through(:podcast_creatorships) }
+    it { should have_many(:reviews) }
   end
+
 end
