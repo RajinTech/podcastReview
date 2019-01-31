@@ -8,7 +8,7 @@ describe('PodcastIndexTile', () => {
   let wrapper,
       podcast = {
         id: 1,
-        title: 'PodCat',
+        title: 'Example podcast',
         creators: ["Tyler", "Bob"]
       }
 
@@ -24,21 +24,19 @@ describe('PodcastIndexTile', () => {
     );
   });
 
-  describe("should render a <Link>", () => {
-    it("that has prop \'title\' as text", () => {
-      console.log(wrapper.find('Link').debug());
-      expect(wrapper.find('Link').props().children).toBe('PodCat')
+  describe("renders a <Link>", () => {
+    it("<Link> has prop \'title\' as text", () => {
+      expect(wrapper.find('Link').props().children).toBe('Example podcast')
     })
 
-    it("to the podcast's show page", () => {
+    it("<Link> leads to the podcast's show page", () => {
       expect(wrapper.find('Link').props().to).toBe('/podcasts/1')
     })
   })
 
-  it('should render prop \'creators\'', () => {
-    expect(wrapper.exists(
-      <h2>By Tyler and Bob</h2>
-    )).toEqual(true)
+  it('should display the names of the podcast\'s creators', () => {
+    expect(wrapper.find('h2')).toIncludeText('Tyler')
+    expect(wrapper.find('h2')).toIncludeText('Bob')
   })
 
 });
