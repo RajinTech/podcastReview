@@ -30,12 +30,12 @@ describe('PodcastIndexContainer', () => {
   afterEach(fetchMock.restore)
 
   it('should have initial state {podcasts: []}', () => {
-    expect(wrapper.state()).toEqual({ podcasts: [] })
+    expect(wrapper).toHaveState('podcasts', [])
   })
 
-  it('renders podcast tiles after api call', (done) => {
+  it('renders <PodcastIndexTile>s after API call', (done) => {
     setTimeout(() => {
-      expect(wrapper.find(PodcastIndexTile)).toBePresent();
+      expect(wrapper.find('PodcastIndexTile')).toBePresent();
       done()
     }, 0)
   })

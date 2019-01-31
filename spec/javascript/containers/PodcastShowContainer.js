@@ -68,25 +68,24 @@ describe('PodcastShowContainer', () => {
     }, 0)
   })
 
-  it('should render show page contents after api call', (done) => {
+  it('should render show page contents after API call', (done) => {
     setTimeout(() => {
-      let expectIncludes = (wrapper, value) => {
-        expect(wrapper.text().includes(value)).toEqual(true)
-      }
-      expectIncludes(wrapper, podcast.title)
-      expectIncludes(wrapper, podcast.description)
-      expectIncludes(wrapper, podcast.url)
-      expectIncludes(wrapper, podcast.creators.join(', '))
-      expectIncludes(wrapper, reviews[0].rating)
-      expectIncludes(wrapper, reviews[0].binge_val)
-      expectIncludes(wrapper, reviews[0].educational_val)
-      expectIncludes(wrapper, reviews[0].entertainment_val)
-      expectIncludes(wrapper, reviews[0].comment)
-      expectIncludes(wrapper, reviews[1].rating)
-      expectIncludes(wrapper, reviews[1].binge_val)
-      expectIncludes(wrapper, reviews[1].educational_val)
-      expectIncludes(wrapper, reviews[1].entertainment_val)
-      expectIncludes(wrapper, reviews[1].comment)
+      let expected_strings = [
+        podcast.title, podcast.description, podcast.url, podcast.creators.join(', ')
+      ]
+      reviews.forEach((review) => {
+        expected_strings = expected_strings.concat([
+          review.rating,
+          review.binge_val,
+          review.educational_val,
+          review.entertainment_val,
+          review.comment
+        ])
+      })
+      
+      expected_strings.forEach((expected_str) => {
+        expect(wrapper).toIncludeText(expected_str)
+      })
       done()
     }, 0)
   })
