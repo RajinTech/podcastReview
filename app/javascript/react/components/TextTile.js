@@ -1,15 +1,16 @@
 import React from 'react';
 
-const TextField = (props) => {
+const TextTile = (props) => {
   return (
     <label>{props.label}
-      <textarea
+      <input
+        type="text"
         onChange={props.onChange}
         name={props.name}
-        value={props.value}
+        value={props.content}
       />
     </label>
     );
 }
 
-export default TextField;
+export default TextTile;

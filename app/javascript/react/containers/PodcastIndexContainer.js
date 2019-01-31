@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PodcastIndexTile from '../components/PodcastIndexTile'
+import { Link } from 'react-router';
 
 class PodcastIndexContainer extends Component {
   constructor(props) {
@@ -34,7 +35,12 @@ class PodcastIndexContainer extends Component {
 
     return(
       <div>
-        {podcasts}
+        <div className="button secondary">
+          <Link to={'/podcasts/new'}>Add a New Podcast</Link>
+        </div>
+        <div>
+          {podcasts}
+        </div>
       </div>
     )
   }

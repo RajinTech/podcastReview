@@ -12,7 +12,7 @@ const RatingField = (props) => {
 
           onChange={props.onChange}
           name={props.name}
-          value={props.content}
+          value={props.value}
         />
       </label>
     </div>

@@ -10,18 +10,23 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     end
   end
 
-  describe "GET#show" do
+  describe "GET#index" do
     it 'should return the reviews of a single podcast' do
       id = Podcast.first.id
-      get :show, params: {id: id}
+      get :index, params: {podcast_id: id}
       returned_json = JSON.parse(response.body)
-      expect(returned_json).to eq(
-        [
-          {"id"=>1, "rating"=>1, "binge_val"=>1, "educational_val"=>1, "entertainment_val"=>1, "comment"=>"great podcast"},
-          {"id"=>2, "rating"=>2, "binge_val"=>2, "educational_val"=>2, "entertainment_val"=>2, "comment"=>"great podcast"},
-          {"id"=>3, "rating"=>3, "binge_val"=>3, "educational_val"=>3, "entertainment_val"=>3, "comment"=>"great podcast"}
-        ]
-      )
+
+      returned_json.each_with_index do |review, i|
+        puts review
+        expect(review).to include( 'id' => i+1 )
+        expect(review).to include( 'rating' => i+1 )
+        expect(review).to include( 'scores' => {
+          'binge' => i+1, 'educational' => i+1, 'entertainment' => i+1
+        })
+        expect(review).to include( 'comment' => 'great podcast' )
+        expect(review).to include( 'total_votes' => 0 )
+        expect(review).to include( 'user_vote' => 0 )
+      end
     end
   end
 end

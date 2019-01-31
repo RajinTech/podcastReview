@@ -9,6 +9,8 @@ class PodcastShowContainer extends Component {
       reviews: [],
       creators: ""
     }
+    this.fetchReviews = this.fetchReviews.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   componentDidMount() {
@@ -28,7 +30,11 @@ class PodcastShowContainer extends Component {
         this.setState({ creators: this.state.podcast.creators.join(', ') });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-    fetch(`/api/v1/reviews/${this.props.params.id}`)
+    this.fetchReviews()
+  }
+
+  fetchReviews() {
+    fetch(`/api/v1/reviews?podcast_id=${this.props.params.id}`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -45,17 +51,58 @@ class PodcastShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  render() {
+  deleteReview(review_id) {
+    fetch(`/reviews/${review_id}`, {
+      'method': 'DELETE',
+      'headers': {
+        'Accept': 'application/json',
+        'Content-Type': "application/json"
+      },
+      'body': JSON.stringify({
+        'review': { 'id': review_id }
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        if (body['successful']) {
+          this.fetchReviews()
+        }
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
+  render() {
     let ratings = this.state.reviews.map(review => {
+      let onClickDelete = () => {this.deleteReview(review.id)}
+
+      let contents = {
+        rating: review.rating,
+        binge_val: review.scores.binge,
+        educational_val: review.scores.educational,
+        entertainment_val: review.scores.entertainment,
+        comment: review.comment
+      }
+
       return(
         <ReviewTile
           key={review.id}
-          rating={review.rating}
-          bingeVal={review.binge_val}
-          educationVal={review.educational_val}
-          entertainmentVal={review.entertainment_val}
-          comment={review.comment}
+          id={review.id}
+          podcastId={this.props.params.id}
+          contents={contents}
+          totalScore={review.scores.binge+review.scores.educational+review.scores.entertainment}
+          totalVotes={review.total_votes}
+          userVote={review.user_vote}
+          editPermission={review.edit_permission}
+          onClickDelete={onClickDelete}
         />
       )
     })

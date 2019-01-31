@@ -1,19 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const PodcastIndexTile = props => {
-  let creators = props.creators.map((creator, index) => {
-    return(
-      <div key={index} className="podcast-detail">
-        {creator}
-      </div>
-    )
-  })
+const PodcastIndexTile = (props) => {
+  let creators = props.creators.slice(0)
+  let last_creator = creators.pop()
+  let creators_str
+  if (creators.length > 0) {
+    creators_str = `By ${creators.join(", ")} and ${last_creator}`
+  }
+  else {
+    creators_str = `By ${last_creator}`
+  }
 
   return (
-    <div>
-      <Link to={`/podcasts/${props.id}`} className="podcast-title">{props.title}</Link>
-      {creators}
+    <div className="small-12 medium-6 large-4 columns">
+      <div className="panel content-tile">
+        <h1>
+          <Link to={`/podcasts/${props.id}`}>{props.title}</Link>
+        </h1>
+        <h2>
+          {creators_str}
+        </h2>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,9 @@
+@keyframes slide-right {
+  from { width: 1px }
+  to { width: 100% }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
