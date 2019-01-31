@@ -8,12 +8,36 @@ class ReviewEditContainer extends ReviewFormContainer {
   constructor(props) {
     super(props)
     this.state = this.props.initialState
-    console.log(this.state);
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    console.log("edit submitted (but not really)");
+    let formPayload = this.state
+
+    fetch(`/reviews/${this.props.reviewId}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(formPayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+            throw(error);
+          }
+        })
+      .then(response => {return response.json()})
+      .then(body => {
+        this.props.updateReview(body)
+        this.props.onClickCancel()
+      })
+      .catch(error => console.error(`Failed to edit review: ${error.message}`));
   }
 
   render() {

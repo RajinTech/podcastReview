@@ -6,6 +6,7 @@ class ReviewTile extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      contents: this.props.contents,
       userVote: this.props.userVote,
       totalVotes: this.props.totalVotes,
       editing: false
@@ -15,6 +16,7 @@ class ReviewTile extends Component {
     this.downVote = this.downVote.bind(this)
     this.startEditing = this.startEditing.bind(this)
     this.stopEditing = this.stopEditing.bind(this)
+    this.updateContents = this.updateContents.bind(this)
   }
 
   vote(voteValue) {
@@ -87,6 +89,13 @@ class ReviewTile extends Component {
     })
   }
 
+  updateContents(newContents) {
+    this.setState({
+      contents: newContents,
+      editing: false
+    })
+  }
+
   render() {
     let editButtons = () => {
       if (this.props.editPermission) {
@@ -109,12 +118,19 @@ class ReviewTile extends Component {
     if (this.state.editing) {
       return (
         <ReviewEditContainer
-          initialState={this.props.contents}
+          initialState={this.state.contents}
           onClickCancel={this.stopEditing}
+          podcastId={this.props.podcastId}
+          reviewId={this.props.id}
+          updateReview={this.updateContents}
         />
       )
     }
     else {
+      let totalValue = this.state.contents.binge_val +
+        this.state.contents.educational_val +
+        this.state.contents.entertainment_val
+
       return(
         <div className="panel">
           <div>
@@ -122,12 +138,12 @@ class ReviewTile extends Component {
             <button onClick={this.downVote}>Downvote</button>
             <h2>User Voted: {this.state.userVote}</h2>
             <h2>Vote Total: {this.state.totalVotes}</h2>
-            <h3>Rating: {this.props.contents.rating}</h3>
-            <h3>Binge Value: {this.props.contents.binge_val}</h3>
-            <h3>Education Value: {this.props.contents.educational_val}</h3>
-            <h3>Entertainment Value: {this.props.contents.entertainment_val}</h3>
-            <h3>Overall Value: {this.props.totalScore}</h3>
-            <h3>Comment: {this.props.contents.comment}</h3>
+            <h3>Rating: {this.state.contents.rating}</h3>
+            <h3>Binge Value: {this.state.contents.binge_val}</h3>
+            <h3>Education Value: {this.state.contents.educational_val}</h3>
+            <h3>Entertainment Value: {this.state.contents.entertainment_val}</h3>
+            <h3>Total Value: {totalValue}</h3>
+            <h3>Comment: {this.state.contents.comment}</h3>
             {editButtons()}
           </div>
         </div>

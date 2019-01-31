@@ -44,9 +44,10 @@ class ReviewFormContainer extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let formPayload = this.state;
+    let formPayload = {};
+    formPayload["review"] = this.state
     formPayload["review"]["podcast_id"] = parseInt(this.props.params.id);
-    formPayload["review"]["user_id"] = 1
+    
     fetch(`/podcasts/${this.props.params.id}/reviews`, {
       credentials: 'same-origin',
       method: 'POST',

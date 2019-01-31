@@ -52,13 +52,8 @@ class PodcastShowContainer extends Component {
   }
 
   deleteReview(review_id) {
-    console.log(`deleting review ${review_id}`);
-    console.log(JSON.stringify({
-      'review': { 'id': review_id }
-    }));
-
-    fetch(`/api/v1/reviews/${review_id}`, {
-      'method': 'delete',
+    fetch(`/reviews/${review_id}`, {
+      'method': 'DELETE',
       'headers': {
         'Accept': 'application/json',
         'Content-Type': "application/json"
@@ -88,6 +83,7 @@ class PodcastShowContainer extends Component {
   render() {
     let ratings = this.state.reviews.map(review => {
       let onClickDelete = () => {this.deleteReview(review.id)}
+
       let contents = {
         rating: review.rating,
         binge_val: review.scores.binge,
