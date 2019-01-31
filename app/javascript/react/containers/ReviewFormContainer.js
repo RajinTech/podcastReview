@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from '../components/TextField'
 import RatingField from '../components/RatingField'
 import { browserHistory } from 'react-router'
+
 class ReviewFormContainer extends Component {
   constructor(props) {
     super(props);
@@ -23,27 +24,22 @@ class ReviewFormContainer extends Component {
   handleTextChange(event) {
     let newComment = event.target.value
     this.setState({ comment: newComment })
-    console.log(this.state.comment)
   }
   handleRatingChange(event) {
     let newRating = event.target.value
     this.setState({ rating: newRating })
-    console.log(this.state.rating)
   }
   handleBingeValChange(event) {
     let newBingeVal = event.target.value
     this.setState({ binge_val: newBingeVal })
-    console.log(this.state.binge_val)
   }
   handleEducationalValChange(event) {
     let newEducationVal = event.target.value
     this.setState({ educational_val: newEducationVal })
-    console.log(this.state.educational_val)
   }
   handleEntertainmentValChange(event) {
     let newEntertainmentVal = event.target.value
     this.setState({ entertainment_val: newEntertainmentVal })
-    console.log(this.state.entertainment_val)
   }
 
   handleSubmit(event) {
@@ -53,9 +49,6 @@ class ReviewFormContainer extends Component {
     };
     formPayload["review"]["podcast_id"] = parseInt(this.props.params.id);
     formPayload["review"]["user_id"] = 1
-    console.log(formPayload);
-    console.log(this.props.params);
-    console.log(this.props.location);
     fetch(`/podcasts/${this.props.params.id}/reviews`, {
       credentials: 'same-origin',
       method: 'POST',
@@ -113,7 +106,7 @@ class ReviewFormContainer extends Component {
             value={this.state.entertainment_val}
             />
           <TextField
-            label="Comment:"
+            label="Comment"
             name="comment"
             onChange={this.handleTextChange}
             value={this.state.comment}
