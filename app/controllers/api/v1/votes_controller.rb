@@ -1,6 +1,4 @@
-class Api::V1::VotesController < ApplicationController
-  protect_from_forgery unless: -> { request.format.json? }
-
+class Api::V1::VotesController < ApiController
   def create
     if current_user.nil?
       head 403

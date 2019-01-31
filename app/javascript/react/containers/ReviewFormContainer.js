@@ -7,8 +7,8 @@ class ReviewFormContainer extends Component {
     super(props);
     this.state = {
       rating: 5,
-      binge_val: 5,
-      educational_val: 5,
+      bingeVal: 5,
+      educationalVal: 5,
       entertainment_val: 5,
       comment: ""
     }
@@ -32,13 +32,13 @@ class ReviewFormContainer extends Component {
   }
   handleBingeValChange(event) {
     let newBingeVal = event.target.value
-    this.setState({ binge_val: newBingeVal })
-    console.log(this.state.binge_val)
+    this.setState({ bingeVal: newBingeVal })
+    console.log(this.state.bingeVal)
   }
   handleEducationalValChange(event) {
     let newEducationVal = event.target.value
-    this.setState({ educational_val: newEducationVal })
-    console.log(this.state.educational_val)
+    this.setState({ educationalVal: newEducationVal })
+    console.log(this.state.educationalVal)
   }
   handleEntertainmentValChange(event) {
     let newEntertainmentVal = event.target.value
@@ -87,7 +87,6 @@ class ReviewFormContainer extends Component {
         <br></br>
         <h3>Submit a New Review for {this.props.location.state.title}</h3>
         <form onSubmit={this.handleSubmit} className="panel">
-
           <RatingField
             label="Overall Rating"
             name="rating"
@@ -96,15 +95,15 @@ class ReviewFormContainer extends Component {
             />
           <RatingField
             label="Bingeability"
-            name="binge_val"
+            name="bingeVal"
             onChange={this.handleBingeValChange}
-            value={this.state.binge_val}
+            value={this.state.bingeVal}
             />
           <RatingField
             label="Educational Value"
-            name="educational_val"
+            name="educationalVal"
             onChange={this.handleEducationalValChange}
-            value={this.state.educational_val}
+            value={this.state.educationalVal}
             />
           <RatingField
             label="Entertainment Value"

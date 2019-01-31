@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :podcasts, only: [:index, :show]
-      resources :reviews, only: [:index, :show, :delete] do
+      resources :reviews, only: [:index, :show, :destroy] do
         resources :votes, only: [:create]
       end
     end
