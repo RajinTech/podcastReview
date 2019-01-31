@@ -84,11 +84,12 @@ module.exports = function(config) {
       type: 'html'
     },
     externals: {
+      jsdom: 'window',
       cheerio: 'window',
       'react/addons': true,
       'react/lib/ExecutionEnvironment': true,
       'react/lib/ReactContext': true,
-      'react/addons': true
+      'react-addons-test-utils': 'react-dom'
     }
   })
 }

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Podcast, type: :model do
-  subject { FactoryBot.create(:podcast) }
+RSpec.describe Review, type: :model do
+  subject { FactoryBot.create(:review) }
 
   describe "validations: " do
     it "is valid with valid attributes" do
@@ -9,25 +9,31 @@ RSpec.describe Podcast, type: :model do
     end
 
     it "is invalid without a title" do
-      subject.title = nil
+      subject.rating = nil
       expect(subject).to_not be_valid
     end
 
     it "is invalid without a description" do
-      subject.description = nil
+      subject.binge_val = nil
       expect(subject).to_not be_valid
     end
 
     it "is invalid without a url" do
-      subject.url = nil
+      subject.educational_val = nil
       expect(subject).to_not be_valid
     end
 
+    it "is invalid without a url" do
+      subject.entertainment_val = nil
+      expect(subject).to_not be_valid
+    end
   end
 
   describe "associations:" do
-    it { should have_many(:creators).through(:podcast_creatorships) }
-    it { should have_many(:reviews) }
-  end
+    it { should
+      belong_to(:podcast) }
+    it { should
+      belong_to(:user) }
 
+  end
 end

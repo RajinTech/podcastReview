@@ -34,7 +34,12 @@ class PodcastIndexContainer extends Component {
 
     return(
       <div>
-        {podcasts}
+        <div className="row-one"></div>
+        <div className="row">
+          <div>
+            {podcasts}
+          </div>
+        </div>
       </div>
     )
   }
