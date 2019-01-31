@@ -6,7 +6,8 @@ class Api::V1::ReviewsController < ApiController
       render json: Review.all
     end
   end
-  def show
-    render json: Review.find(params["id"]), serializer: ReviewSerializer
-  end
+  # def show
+  #   binding.pry
+  #   render json: Review.find(params["id"]), serializer: ReviewSerializer
+  # end
 end

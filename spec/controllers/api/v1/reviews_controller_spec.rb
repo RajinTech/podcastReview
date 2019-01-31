@@ -10,17 +10,15 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     end
   end
 
-  describe "GET#show" do
+  describe "GET#index" do
     it 'should return the reviews of a single podcast' do
       id = Podcast.first.id
-      get :show, params: {id: id}
+      get :index, params: {podcast_id: id}
       returned_json = JSON.parse(response.body)
       expect(returned_json).to eq(
-        [
-          {"id"=>1, "rating"=>1, "binge_val"=>1, "educational_val"=>1, "entertainment_val"=>1, "comment"=>"great podcast"},
-          {"id"=>2, "rating"=>2, "binge_val"=>2, "educational_val"=>2, "entertainment_val"=>2, "comment"=>"great podcast"},
-          {"id"=>3, "rating"=>3, "binge_val"=>3, "educational_val"=>3, "entertainment_val"=>3, "comment"=>"great podcast"}
-        ]
+        [{"id"=>1, "rating"=>1, "comment"=>"great podcast", "scores"=>{"binge"=>1, "educational"=>1, "entertainment"=>1}, "total_votes"=>0, "user_vote"=>0},
+       {"id"=>2, "rating"=>2, "comment"=>"great podcast", "scores"=>{"binge"=>2, "educational"=>2, "entertainment"=>2}, "total_votes"=>0, "user_vote"=>0},
+       {"id"=>3, "rating"=>3, "comment"=>"great podcast", "scores"=>{"binge"=>3, "educational"=>3, "entertainment"=>3}, "total_votes"=>0, "user_vote"=>0}]
       )
     end
   end
