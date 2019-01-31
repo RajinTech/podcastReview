@@ -1,5 +1,5 @@
 import PodcastIndexTile from '../../../app/javascript/react/components/PodcastIndexTile.js'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import React from 'react'
 import { Link } from 'react-router'
 import jasmineEnzyme from 'jasmine-enzyme'
@@ -14,7 +14,7 @@ describe('PodcastIndexTile', () => {
 
   beforeEach(() => {
     jasmineEnzyme()
-    wrapper = shallow(
+    wrapper = mount(
       <PodcastIndexTile
         key={podcast.id}
         id={podcast.id}
@@ -26,17 +26,17 @@ describe('PodcastIndexTile', () => {
 
   describe("should render a <Link>", () => {
     it("that has prop \'title\' as text", () => {
-      console.log(wrapper.debug());
-      expect(wrapper.find(Link).props().children).toBe('PodCat')
+      console.log(wrapper.find('Link').debug());
+      expect(wrapper.find('Link').props().children).toBe('PodCat')
     })
 
     it("to the podcast's show page", () => {
-      expect(wrapper.find(Link).props().to).toBe('/podcasts/1')
+      expect(wrapper.find('Link').props().to).toBe('/podcasts/1')
     })
   })
 
   it('should render prop \'creators\'', () => {
-    expect(wrapper.containsMatchingElement(
+    expect(wrapper.exists(
       <h2>By Tyler and Bob</h2>
     )).toEqual(true)
   })
