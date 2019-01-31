@@ -23,18 +23,28 @@ describe('PodcastShowContainer', () => {
       {
         id: 1,
         rating: 1,
-        binge_val: 1,
-        educational_val: 1,
-        entertainment_val: 1,
-        comment: "Srsly worst podcast ever"
+        scores: {
+          binge: 1,
+          educational: 1,
+          entertainment: 1
+        },
+        comment: "Srsly worst podcast ever",
+        total_votes: 0,
+        user_vote: 0,
+        edit_permission: false
       },
       {
         id: 2,
         rating: 5,
-        binge_val: 5,
-        educational_val: 5,
-        entertainment_val: 5,
-        comment: "Srsly best podcast ever"
+        scores: {
+          binge: 5,
+          educational: 5,
+          entertainment: 5
+        },
+        comment: "Srsly best podcast ever",
+        total_votes: 0,
+        user_vote: 0,
+        edit_permission: false
       }
     ]
 
@@ -43,7 +53,7 @@ describe('PodcastShowContainer', () => {
       body: podcast
     })
 
-    fetchMock.get('/api/v1/reviews/1', {
+    fetchMock.get('/api/v1/reviews?podcast_id=1', {
       status: 200,
       body: reviews
     })
@@ -76,13 +86,13 @@ describe('PodcastShowContainer', () => {
       reviews.forEach((review) => {
         expected_strings = expected_strings.concat([
           review.rating,
-          review.binge_val,
-          review.educational_val,
-          review.entertainment_val,
+          review.scores.binge,
+          review.scores.educational,
+          review.scores.entertainment,
           review.comment
         ])
       })
-      
+
       expected_strings.forEach((expected_str) => {
         expect(wrapper).toIncludeText(expected_str)
       })
