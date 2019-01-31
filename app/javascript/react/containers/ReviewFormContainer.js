@@ -10,7 +10,7 @@ class ReviewFormContainer extends Component {
       rating: 5,
       bingeVal: 5,
       educationalVal: 5,
-      entertainment_val: 5,
+      entertainmentVal: 5,
       comment: ""
     }
     this.handleTextChange = this.handleTextChange.bind(this)
@@ -31,15 +31,15 @@ class ReviewFormContainer extends Component {
   }
   handleBingeValChange(event) {
     let newBingeVal = event.target.value
-    this.setState({ binge_val: newBingeVal })
+    this.setState({ bingeVal: newBingeVal })
   }
   handleEducationalValChange(event) {
     let newEducationVal = event.target.value
-    this.setState({ educational_val: newEducationVal })
+    this.setState({ educationalVal: newEducationVal })
   }
   handleEntertainmentValChange(event) {
     let newEntertainmentVal = event.target.value
-    this.setState({ entertainment_val: newEntertainmentVal })
+    this.setState({ entertainmentVal: newEntertainmentVal })
   }
 
   handleSubmit(event) {
@@ -100,9 +100,9 @@ class ReviewFormContainer extends Component {
             />
           <RatingField
             label="Entertainment Value"
-            name="entertainment_val"
+            name="entertainmentVal"
             onChange={this.handleEntertainmentValChange}
-            value={this.state.entertainment_val}
+            value={this.state.entertainmentVal}
             />
           <TextField
             label="Comment"
