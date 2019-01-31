@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'podcasts#index'
 
-  resources :podcasts, only: [:index, :show] do
+  resources :podcasts, only: [:index, :show, :new, :create] do
     resources :reviews, only: [:new, :create]
   end
 
