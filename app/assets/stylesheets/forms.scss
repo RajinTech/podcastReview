@@ -32,7 +32,8 @@ textarea {
 }
 
 .button.form-submit {
-  border-radius: 6px;
+  border-radius: 10px;
+  border: 2px solid $quarter-pearl-lusta;
   background-color: $brilliant-rose;
   color: white;
   font-size: 1.5rem;

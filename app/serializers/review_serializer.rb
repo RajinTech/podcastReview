@@ -1,5 +1,13 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :rating, :comment, :scores, :total_votes, :user_vote, :edit_permission
+  attributes :id, :rating, :comment, :scores, :total_votes, :user_vote, :edit_permission, :username
+
+  def username
+    if object.user == nil
+      ""
+    else
+      object.user.email
+    end
+  end
 
   def scores
     return(

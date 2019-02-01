@@ -97,14 +97,22 @@ class ReviewTile extends Component {
   }
 
   render() {
+    let userFromEmail;
+    if (this.state.contents.username == "") {
+      userFromEmail = "Guy Reviewerson"
+    }
+    else {
+      userFromEmail = this.state.contents.username.split("@")[0]
+    }
+
     let editButtons = () => {
       if (this.props.editPermission) {
         return(
           <div>
-            <button onClick={this.startEditing}>
+            <button className="button form-submit" onClick={this.startEditing}>
               Edit
             </button>
-            <button onClick={this.props.onClickDelete}>
+            <button className="button form-submit" onClick={this.props.onClickDelete}>
               Delete
             </button>
           </div>
@@ -132,12 +140,9 @@ class ReviewTile extends Component {
         this.state.contents.entertainment_val
 
       return(
-        <div className="panel">
+        <div className="review panel">
           <div>
-            <button onClick={this.upVote}>Upvote</button>
-            <button onClick={this.downVote}>Downvote</button>
-            <h2>User Voted: {this.state.userVote}</h2>
-            <h2>Vote Total: {this.state.totalVotes}</h2>
+            <h2>Reviewer: {userFromEmail}</h2>
             <h3>Rating: {this.state.contents.rating}</h3>
             <h3>Binge Value: {this.state.contents.binge_val}</h3>
             <h3>Education Value: {this.state.contents.educational_val}</h3>
@@ -145,6 +150,11 @@ class ReviewTile extends Component {
             <h3>Total Value: {totalValue}</h3>
             <h3>Comment: {this.state.contents.comment}</h3>
             {editButtons()}
+            <div className="bar"></div>
+            <button className="button form-submit" onClick={this.upVote}>Upvote</button>
+            <button className="button form-submit" onClick={this.downVote}>Downvote</button>
+            <h2>My vote: {this.state.userVote}</h2>
+            <h2>Net Votes for this Review: {this.state.totalVotes}</h2>
           </div>
         </div>
       )

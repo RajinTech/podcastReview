@@ -74,8 +74,8 @@ class ReviewEditContainer extends ReviewFormContainer {
             onChange={this.handleTextChange}
             value={this.state.comment}
             />
-          <input className="button" type="submit" value="Save"/>
-          <button onClick={this.props.onClickCancel}>Discard</button>
+          <input className="button form-submit" type="submit" value="Save"/>
+          <button className="button form-submit" onClick={this.props.onClickCancel}>Discard</button>
         </form>
       </div>
     )
