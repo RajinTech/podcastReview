@@ -1,8 +1,7 @@
 class User < ApplicationRecord
+  mount_uploader :profile_photo, ProfilePhotoUploader
   has_many :reviews
   has_many :votes
-
-  validates :role, inclusion: {in: ["member", "admin"]}
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
