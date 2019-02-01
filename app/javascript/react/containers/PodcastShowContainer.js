@@ -46,6 +46,7 @@ class PodcastShowContainer extends Component {
       })
       .then((response) => response.json())
       .then((responseData) => {
+        console.log(responseData);
         this.setState({ reviews: responseData })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -85,6 +86,7 @@ class PodcastShowContainer extends Component {
       let onClickDelete = () => {this.deleteReview(review.id)}
 
       let contents = {
+        username: review.username,
         rating: review.rating,
         binge_val: review.scores.binge,
         educational_val: review.scores.educational,
