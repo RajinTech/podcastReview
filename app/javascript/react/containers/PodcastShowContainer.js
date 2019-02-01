@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ReviewTile from '../components/ReviewTile'
 import { Link } from 'react-router';
+import ReviewTile from '../components/ReviewTile'
+import HomeButton from '../components/HomeButton'
 class PodcastShowContainer extends Component {
   constructor(props) {
     super(props);
@@ -117,24 +118,33 @@ class PodcastShowContainer extends Component {
     })
 
     return(
-      <div>
+      <div className="fade-in">
         <div className="row-one"></div>
         <div className="row">
-          <div className="panel show-header">
+          <HomeButton />
+        </div>
+        <div className="row">
+          <div className="small-12 columns panel show-header">
             <h1>{this.state.podcast.title}</h1>
             <div className="avg-rating">Average rating: {averageRating}</div>
             <h3>Creators: {this.state.creators}</h3>
             <h3>Description: {this.state.podcast.description}</h3>
             <h3>{this.state.podcast.url}</h3>
           </div>
-          <div className="small-11 medium-5 large-2 panel new-review">
-            <Link
-              to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
-              state: { title: this.state.podcast.title }} }>
+        </div>
+        <div className="row">
+          <Link
+            to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
+            state: { title: this.state.podcast.title }} }>
+            <p className="panel new-review">
               Add a new review for {this.state.podcast.title}
-            </Link>
-          </div>
+            </p>
+          </Link>
+        </div>
+        <div className="row">
           <div className="bar"></div>
+        </div>
+        <div className="row">
           <div>
             <div className="reviews-header">Reviews</div>
             <h3>{ratings}</h3>

@@ -1,3 +1,7 @@
+.invisible {
+  visibility: hidden;
+}
+
 @keyframes slide-right {
   from { width: 1px }
   to { width: 100% }

@@ -37,9 +37,11 @@ class PodcastIndexContainer extends Component {
       <div>
         <div className="row-one"></div>
         <div className="row">
-          <div className="small-11 medium-5 large-2 panel new-podcast fade-in">
-            <Link to={'/podcasts/new'}>Add a New Podcast</Link>
-          </div>
+          <LinkButton
+            to="/podcasts/new"
+            classes="panel new-podcast fade-in"
+            text="Add a New Podcast"
+          />
         </div>
         <div className="row">
           {podcasts}

@@ -1,0 +1,42 @@
+@import '_colors';
+
+.button {
+  background-color: $turquoise-blue;
+  color: $mine-shaft;
+  border: 2px white solid;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+.button:hover {
+  background-color: $mustard;
+  color: $mine-shaft;
+}
+
+.new-podcast {
+  @extend .button ;
+  margin: 8px;
+  margin-top: 0px;
+  margin-bottom: 2rem;
+}
+
+.new-review {
+  @extend .button ;
+  margin-bottom: 1rem;
+}
+
+.back-button {
+  @extend .button ;
+  background-color: $lavender-blush;
+  color: $rose;
+  border: 2px $rose solid;
+  font-size: 1rem;
+  max-width: 100px;
+}
+
+.back-button:hover {
+  background-color: $lavender-pink;
+  color: $rose;
+}
