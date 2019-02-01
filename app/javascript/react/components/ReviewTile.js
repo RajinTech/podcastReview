@@ -122,6 +122,12 @@ class ReviewTile extends Component {
       }
     }
 
+    let starRating = (rating) => {
+      let filled_stars = "★".repeat(rating)
+      let empty_stars = "☆".repeat(5-rating)
+      return filled_stars + empty_stars
+    }
+
     if (this.state.editing) {
       return (
         <ReviewEditContainer
@@ -140,19 +146,31 @@ class ReviewTile extends Component {
 
       return(
         <div className="review panel">
-          <div>
-            <h2>Reviewer: {userFromEmail}</h2>
-            <h3>Overall Rating: {this.state.contents.rating}</h3>
-            <h3>Binge Value: {this.state.contents.binge_val}</h3>
-            <h3>Education Value: {this.state.contents.educational_val}</h3>
-            <h3>Entertainment Value: {this.state.contents.entertainment_val}</h3>
-            <h3>Comment: {this.state.contents.comment}</h3>
-            {editButtons()}
+          <div className="row">
+            <div className="small-12 medium-8 columns">
+              <h2 className="title">{userFromEmail}</h2>
+              <h3 className="review-body">{this.state.contents.comment}</h3>
+              {editButtons()}
+            </div>
+            <div className="small-12 medium-4 columns panel ratings">
+              <h3 className="stars">{starRating(this.state.contents.rating)}</h3>
+              <h4>Binge Value: {this.state.contents.binge_val}</h4>
+              <h4>Education Value: {this.state.contents.educational_val}</h4>
+              <h4>Entertainment Value: {this.state.contents.entertainment_val}</h4>
+            </div>
+          </div>
+          <div className="row">
             <div className="bar"></div>
-            <button className="button form-submit" onClick={this.upVote}>Upvote</button>
-            <button className="button form-submit" onClick={this.downVote}>Downvote</button>
-            <h2>My vote: {this.state.userVote}</h2>
-            <h2>Net Votes for this Review: {this.state.totalVotes}</h2>
+          </div>
+          <div className="row">
+            <div className="small-6 columns">
+              <button className="button vote form-submit" onClick={this.upVote}>Upvote</button>
+              <button className="button vote form-submit" onClick={this.downVote}>Downvote</button>
+            </div>
+            <div className="small-6 columns">
+              <h4>My vote: {this.state.userVote}</h4>
+              <h4>Net Votes for this Review: {this.state.totalVotes}</h4>
+            </div>
           </div>
         </div>
       )

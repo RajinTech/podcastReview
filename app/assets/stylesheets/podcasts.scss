@@ -53,12 +53,6 @@ a:hover {
   color: $rose;
 }
 
-.reviews-header {
-  font-size: 3rem;
-  color: $mustard;
-  font-weight: bold;
-}
-
 .bar {
   height: 1px;
   background-color: $rose;
@@ -66,15 +60,9 @@ a:hover {
   margin-top: 1.4rem;
 }
 
-.review {
-  border-radius: 12px;
-  background-color: $quarter-pearl-lusta;
-}
-
-.avg-rating {
-  color: $turquoise-blue;
-  font-size: 2rem;
+.stars {
   font-weight: bold;
+  color: $amber;
 }
 
 .show-link {
