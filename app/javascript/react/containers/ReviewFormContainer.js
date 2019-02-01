@@ -77,10 +77,11 @@ class ReviewFormContainer extends Component {
   render(){
     return(
       <div className="fade-in">
+        <div className="row-one"></div>
         <div className="row">
           <LinkButton
             to={`/podcasts/${this.props.params.id}`}
-            classes="back-button"
+            classes="panel back-button"
             text="Back"
           />
         </div>

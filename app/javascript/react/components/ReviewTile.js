@@ -25,7 +25,6 @@ class ReviewTile extends Component {
         'value': voteValue
       }
     }
-
     fetch(`/api/v1/reviews/${this.props.id}/votes`, {
       'method': "post",
       'headers': {
@@ -34,38 +33,34 @@ class ReviewTile extends Component {
       },
       'body': JSON.stringify(vote)
     })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      }
-      else if (response.status == 403) {
-        window.location.href = "/users/sign_in"
-      }
-      else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(response => {
-      this.setState({
-        userVote: response['user_vote'],
-        totalVotes: response['total_votes']
+      .then(response => {
+        if (response.ok) {
+          return response;
+        }
+        else if (response.status == 403) {
+          window.location.href = "/users/sign_in"
+        }
+        else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
       })
-      console.log(response);
-    })
-    .catch(error => {
-      console.error(`Error while attempting to vote: ${error.message}`)
-    })
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          userVote: response['user_vote'],
+          totalVotes: response['total_votes']
+        })
+      })
+      .catch(error => {
+        console.error(`Error while attempting to vote: ${error.message}`)
+      })
   }
 
   upVote() {
     if (this.state.userVote === 1) {
       this.vote(0)
-    }
-    else if (this.state.userVote === null) {
-      this.vote(1)
     }
     else {
       this.vote(1)

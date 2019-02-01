@@ -48,9 +48,7 @@ class PodcastShowContainer extends Component {
       })
       .then((response) => response.json())
       .then((responseData) => {
-        // console.log(responseData);
         this.setState({ reviews: responseData })
-        // console.log(this.state);
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -99,7 +97,6 @@ class PodcastShowContainer extends Component {
     }
 
     let sortedReviews = this.state.reviews.sort((a, b) => b.total_votes - a.total_votes)
-    console.log(sortedReviews);
 
     let reviewsHeader;
 
