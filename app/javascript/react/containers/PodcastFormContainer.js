@@ -86,8 +86,8 @@ class PodcastFormContainer extends Component {
   render(){
     return(
       <div className="row">
-        <br></br>
-        <h3>Add a New Podcast</h3>
+        <div className="row-one"></div>
+        <div className="form-header">Add a New Podcast</div>
         <form onSubmit={this.handleSubmit} className="panel">
           <TextTile
             label="Podcast Title"
@@ -125,7 +125,7 @@ class PodcastFormContainer extends Component {
             onChange={this.handleDescriptionChange}
             value={this.state.description}
             />
-          <input className="button" type="submit" value="Submit"/>
+          <input className="button form-submit" type="submit" value="Submit"/>
         </form>
       </div>
     )
