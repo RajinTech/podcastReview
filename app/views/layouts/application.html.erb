@@ -27,6 +27,9 @@
     </section>
     <section class="nav-section-right">
       <%- if current_user %>
+
+        <li class="active picture"><img src="<%= current_user.profile_photo %>" width="50" height="50" /></li>
+
         <%= link_to destroy_user_session_path, method: :delete do %>
           <div class="nav-button">Sign Out</div>
         <% end %>
