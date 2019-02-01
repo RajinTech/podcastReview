@@ -29,14 +29,14 @@
 
 .back-button {
   @extend .button ;
-  background-color: $lavender-blush;
-  color: $rose;
-  border: 2px $rose solid;
+  background-color: $brilliant-rose;
+  color: $white;
+  border: 2px white solid;
   font-size: 1rem;
   max-width: 100px;
 }
 
 .back-button:hover {
   background-color: $lavender-pink;
-  color: $rose;
+  color: $lavender-blush;
 }

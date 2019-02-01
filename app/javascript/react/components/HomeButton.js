@@ -7,7 +7,7 @@ const HomeButton = (props) => {
     <div>
       <LinkButton
         to="/"
-        classes="panel back-button"
+        classes="back-button"
         text="Home"
       />
     </div>

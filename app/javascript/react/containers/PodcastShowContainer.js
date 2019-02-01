@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import ReviewTile from '../components/ReviewTile'
 import HomeButton from '../components/HomeButton'
+import LinkButton from '../components/LinkButton'
 class PodcastShowContainer extends Component {
   constructor(props) {
     super(props);
@@ -136,7 +137,7 @@ class PodcastShowContainer extends Component {
           <Link
             to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
             state: { title: this.state.podcast.title }} }>
-            <p className="panel new-review">
+            <p className="small-12 medium-10 large-8 small-centered panel new-review">
               Add a new review for {this.state.podcast.title}
             </p>
           </Link>

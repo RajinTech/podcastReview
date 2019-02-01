@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '../components/TextField'
 import RatingField from '../components/RatingField'
+import LinkButton from '../components/LinkButton'
 import { browserHistory } from 'react-router'
 
 class ReviewFormContainer extends Component {
@@ -47,7 +48,7 @@ class ReviewFormContainer extends Component {
     let formPayload = {};
     formPayload["review"] = this.state
     formPayload["review"]["podcast_id"] = parseInt(this.props.params.id);
-    
+
     fetch(`/podcasts/${this.props.params.id}/reviews`, {
       credentials: 'same-origin',
       method: 'POST',
@@ -75,42 +76,51 @@ class ReviewFormContainer extends Component {
 
   render(){
     return(
-      <div className="row">
-        <br></br>
-        <div className="form-header">Submit a New Review for {this.props.location.state.title}</div>
-        <form onSubmit={this.handleSubmit} className="panel">
-          <RatingField
-            label="Overall Rating"
-            name="rating"
-            onChange={this.handleRatingChange}
-            value={this.state.rating}
-            />
-          <RatingField
-            label="Bingeability"
-            name="binge_val"
-            onChange={this.handleBingeValChange}
-            value={this.state.binge_val}
-            />
-          <RatingField
-            label="Educational Value"
-            name="educational_val"
-            onChange={this.handleEducationalValChange}
-            value={this.state.educational_val}
-            />
-          <RatingField
-            label="Entertainment Value"
-            name="entertainment_val"
-            onChange={this.handleEntertainmentValChange}
-            value={this.state.entertainment_val}
-            />
-          <TextField
-            label="Comment"
-            name="comment"
-            onChange={this.handleTextChange}
-            value={this.state.comment}
-            />
-          <input className="button form-submit" type="submit" value="Submit"/>
-        </form>
+      <div className="fade-in">
+        <div className="row">
+          <LinkButton
+            to={`/podcasts/${this.props.params.id}`}
+            classes="back-button"
+            text="Back"
+          />
+        </div>
+        <div className="row">
+          <br></br>
+          <div className="form-header">Submit a New Review for {this.props.location.state.title}</div>
+          <form onSubmit={this.handleSubmit} className="panel">
+            <RatingField
+              label="Overall Rating"
+              name="rating"
+              onChange={this.handleRatingChange}
+              value={this.state.rating}
+              />
+            <RatingField
+              label="Bingeability"
+              name="binge_val"
+              onChange={this.handleBingeValChange}
+              value={this.state.binge_val}
+              />
+            <RatingField
+              label="Educational Value"
+              name="educational_val"
+              onChange={this.handleEducationalValChange}
+              value={this.state.educational_val}
+              />
+            <RatingField
+              label="Entertainment Value"
+              name="entertainment_val"
+              onChange={this.handleEntertainmentValChange}
+              value={this.state.entertainment_val}
+              />
+            <TextField
+              label="Comment"
+              name="comment"
+              onChange={this.handleTextChange}
+              value={this.state.comment}
+              />
+            <input className="button form-submit" type="submit" value="Submit"/>
+          </form>
+        </div>
       </div>
     )
   };
