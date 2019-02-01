@@ -46,9 +46,9 @@ class PodcastShowContainer extends Component {
       })
       .then((response) => response.json())
       .then((responseData) => {
-        console.log(responseData);
+        // console.log(responseData);
         this.setState({ reviews: responseData })
-        console.log(this.state);
+        // console.log(this.state);
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -82,14 +82,26 @@ class PodcastShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+
   render() {
     let totalRatingPoints = 0;
+    let averageRating;
     this.state.reviews.forEach(revew => {
       totalRatingPoints += revew.rating
     })
-    let averageRating = parseFloat(totalRatingPoints/(this.state.reviews.length)).toFixed(2)
+    if (totalRatingPoints === 0) {
+      averageRating = "N/A"
+    }
+    else {
+      averageRating = parseFloat(totalRatingPoints/(this.state.reviews.length)).toFixed(2)
+    }
 
-    let ratings = this.state.reviews.map(review => {
+    let sortedReviews = this.state.reviews.sort((a, b) => b.total_votes - a.total_votes)
+    console.log(sortedReviews);
+
+    let reviewsHeader;
+
+    let ratings = sortedReviews.map(review => {
       let onClickDelete = () => {this.deleteReview(review.id)}
 
       let contents = {
@@ -100,6 +112,8 @@ class PodcastShowContainer extends Component {
         entertainment_val: review.scores.entertainment,
         comment: review.comment
       }
+
+      reviewsHeader = "Reviews"
 
       return(
         <ReviewTile
@@ -123,9 +137,9 @@ class PodcastShowContainer extends Component {
           <div className="panel show-header">
             <h1>{this.state.podcast.title}</h1>
             <div className="avg-rating">Average rating: {averageRating}</div>
-            <h3>Creators: {this.state.creators}</h3>
-            <h3>Description: {this.state.podcast.description}</h3>
-            <h3>{this.state.podcast.url}</h3>
+            <div className="show-details">Creators: {this.state.creators}</div>
+            <div className="show-details">Description: {this.state.podcast.description}</div>
+            <div className="show-link"><a href={this.state.podcast.url} target="_blank">{this.state.podcast.url}</a></div>
           </div>
           <div className="small-11 medium-5 large-2 panel new-review">
             <Link
@@ -134,9 +148,8 @@ class PodcastShowContainer extends Component {
               Add a new review for {this.state.podcast.title}
             </Link>
           </div>
-          <div className="bar"></div>
           <div>
-            <div className="reviews-header">Reviews</div>
+            <div className="reviews-header">{reviewsHeader}</div>
             <h3>{ratings}</h3>
           </div>
         </div>
