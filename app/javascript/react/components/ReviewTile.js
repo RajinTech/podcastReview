@@ -147,11 +147,10 @@ class ReviewTile extends Component {
         <div className="review panel">
           <div>
             <h2>Reviewer: {userFromEmail}</h2>
-            <h3>Rating: {this.state.contents.rating}</h3>
+            <h3>Overall Rating: {this.state.contents.rating}</h3>
             <h3>Binge Value: {this.state.contents.binge_val}</h3>
             <h3>Education Value: {this.state.contents.educational_val}</h3>
             <h3>Entertainment Value: {this.state.contents.entertainment_val}</h3>
-            <h3>Total Value: {totalValue}</h3>
             <h3>Comment: {this.state.contents.comment}</h3>
             {editButtons()}
             <div className="bar"></div>
