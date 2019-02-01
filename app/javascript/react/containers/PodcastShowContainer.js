@@ -48,6 +48,7 @@ class PodcastShowContainer extends Component {
       .then((responseData) => {
         console.log(responseData);
         this.setState({ reviews: responseData })
+        console.log(this.state);
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -82,6 +83,12 @@ class PodcastShowContainer extends Component {
   }
 
   render() {
+    let totalRatingPoints = 0;
+    this.state.reviews.forEach(revew => {
+      totalRatingPoints += revew.rating
+    })
+    let averageRating = parseFloat(totalRatingPoints/(this.state.reviews.length)).toFixed(2)
+
     let ratings = this.state.reviews.map(review => {
       let onClickDelete = () => {this.deleteReview(review.id)}
 
@@ -115,6 +122,7 @@ class PodcastShowContainer extends Component {
         <div className="row">
           <div className="panel show-header">
             <h1>{this.state.podcast.title}</h1>
+            <div className="avg-rating">Average rating: {averageRating}</div>
             <h3>Creators: {this.state.creators}</h3>
             <h3>Description: {this.state.podcast.description}</h3>
             <h3>{this.state.podcast.url}</h3>

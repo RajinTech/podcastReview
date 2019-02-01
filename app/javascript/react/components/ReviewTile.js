@@ -53,6 +53,7 @@ class ReviewTile extends Component {
         userVote: response['user_vote'],
         totalVotes: response['total_votes']
       })
+      console.log(response);
     })
     .catch(error => {
       console.error(`Error while attempting to vote: ${error.message}`)
@@ -62,6 +63,9 @@ class ReviewTile extends Component {
   upVote() {
     if (this.state.userVote === 1) {
       this.vote(0)
+    }
+    else if (this.state.userVote === null) {
+      this.vote(1)
     }
     else {
       this.vote(1)

@@ -8,6 +8,7 @@ class Api::V1::VotesController < ApiController
         review_id: params['review_id'],
         value: vote_params['value']
       })
+    end
 
       if !new_vote.persisted?
         new_vote = Vote.find_by({
@@ -18,7 +19,7 @@ class Api::V1::VotesController < ApiController
         new_vote.save
         render json: new_vote, serializer: VoteConfirmSerializer
       end
-    end
+
   end
 
   def vote_params
