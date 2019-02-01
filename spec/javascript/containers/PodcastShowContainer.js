@@ -29,6 +29,7 @@ describe('PodcastShowContainer', () => {
           entertainment: 1
         },
         comment: "Srsly worst podcast ever",
+        username: "test@gmail.com",
         total_votes: 0,
         user_vote: 0,
         edit_permission: false
@@ -42,6 +43,7 @@ describe('PodcastShowContainer', () => {
           entertainment: 5
         },
         comment: "Srsly best podcast ever",
+        username: "test@gmail.com",
         total_votes: 0,
         user_vote: 0,
         edit_permission: false
