@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '../components/TextField';
 import TextTile from '../components/TextTile';
+import HomeButton from '../components/HomeButton'
 import { browserHistory } from 'react-router'
 
 class PodcastFormContainer extends Component {
@@ -85,48 +86,51 @@ class PodcastFormContainer extends Component {
 
   render(){
     return(
-      <div className="row">
+      <div className="fade-in">
         <div className="row-one"></div>
-        <div className="form-header">Add a New Podcast</div>
-        <form onSubmit={this.handleSubmit} className="panel">
-          <TextTile
-            label="Podcast Title"
-            name="podcastTitle"
-            onChange={this.handleTitleChange}
-            value={this.state.title}
-          />
-          <TextTile
-            label="Podcast Creator 1"
-            name="podcastCreatorOne"
-            onChange={this.handleCreatorOneChange}
-            value={this.state.creatorOne}
-          />
-          <TextTile
-            label="Podcast Creator 2"
-            name="podcastCreatorTwo"
-            onChange={this.handleCreatorTwoChange}
-            value={this.state.creatorTwo}
-          />
-          <TextTile
-            label="Podcast Creator 3"
-            name="podcastCreatorThree"
-            onChange={this.handleCreatorThreeChange}
-            value={this.state.creatorThree}
-          />
-          <TextTile
-            label="URL"
-            name="url"
-            onChange={this.handleUrlChange}
-            value={this.state.url}
-          />
-          <TextField
-            label="Description"
-            name="description"
-            onChange={this.handleDescriptionChange}
-            value={this.state.description}
+        <div className="row">
+          <HomeButton />
+          <div className="form-header">Add a New Podcast</div>
+          <form onSubmit={this.handleSubmit} className="panel">
+            <TextTile
+              label="Podcast Title"
+              name="podcastTitle"
+              onChange={this.handleTitleChange}
+              value={this.state.title}
             />
-          <input className="button form-submit" type="submit" value="Submit"/>
-        </form>
+            <TextTile
+              label="Podcast Creator 1"
+              name="podcastCreatorOne"
+              onChange={this.handleCreatorOneChange}
+              value={this.state.creatorOne}
+            />
+            <TextTile
+              label="Podcast Creator 2"
+              name="podcastCreatorTwo"
+              onChange={this.handleCreatorTwoChange}
+              value={this.state.creatorTwo}
+            />
+            <TextTile
+              label="Podcast Creator 3"
+              name="podcastCreatorThree"
+              onChange={this.handleCreatorThreeChange}
+              value={this.state.creatorThree}
+            />
+            <TextTile
+              label="URL"
+              name="url"
+              onChange={this.handleUrlChange}
+              value={this.state.url}
+            />
+            <TextField
+              label="Description"
+              name="description"
+              onChange={this.handleDescriptionChange}
+              value={this.state.description}
+              />
+            <input className="button form-submit" type="submit" value="Submit"/>
+          </form>
+        </div>
       </div>
     )
   }

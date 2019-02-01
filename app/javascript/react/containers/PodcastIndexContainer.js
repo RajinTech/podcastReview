@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PodcastIndexTile from '../components/PodcastIndexTile'
+import LinkButton from '../components/LinkButton'
 import { Link } from 'react-router';
 
 class PodcastIndexContainer extends Component {
@@ -37,9 +38,11 @@ class PodcastIndexContainer extends Component {
       <div>
         <div className="row-one"></div>
         <div className="row">
-          <div className="small-11 medium-5 large-2 panel new-podcast">
-            <Link to={'/podcasts/new'}>Add a New Podcast</Link>
-          </div>
+          <LinkButton
+            to="/podcasts/new"
+            classes="small-12 medium-10 large-8 small-centered columns panel new-podcast"
+            text="Add a New Podcast"
+          />
         </div>
         <div className="row">
           {podcasts}

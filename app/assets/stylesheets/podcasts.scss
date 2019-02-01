@@ -12,26 +12,8 @@ a:hover {
   color: inherit;
 }
 
-.new-podcast {
-  background-color: $turquoise-blue;
-  color: $mine-shaft;
-  margin: 8px;
-  margin-top: 0px;
-  margin-bottom: 2rem;
-  border: 2px white solid;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 10px;
-}
-
 .small-x {
   width: 80%
-}
-
-.new-podcast:hover {
-  background-color: $mustard;
-  color: $mine-shaft;
 }
 
 .content-tile {
@@ -39,8 +21,6 @@ a:hover {
   border-radius: 6px;
   border: 2px $mustard solid;
   background-color: $quarter-pearl-lusta;
-  animation-name: fade-in;
-  animation-duration: 0.5s;
 }
 
 .content-tile h1 {
@@ -70,29 +50,13 @@ a:hover {
 
 .show-header h1 {
   font-weight: bold;
-  color: $turquoise-blue;
+  color: $rose;
 }
 
 .reviews-header {
   font-size: 3rem;
   color: $mustard;
   font-weight: bold;
-}
-
-.new-review {
-  background-color: $turquoise-blue;
-  color: $mine-shaft;
-  margin-bottom: 1rem;
-  border: 2px white solid;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 10px;
-}
-
-.new-review:hover {
-  background-color: $mustard;
-  color: $mine-shaft;
 }
 
 .bar {

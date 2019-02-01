@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import ReviewTile from '../components/ReviewTile'
 import { Link } from 'react-router';
+import ReviewTile from '../components/ReviewTile'
+import HomeButton from '../components/HomeButton'
+import LinkButton from '../components/LinkButton'
 class PodcastShowContainer extends Component {
   constructor(props) {
     super(props);
@@ -46,9 +48,7 @@ class PodcastShowContainer extends Component {
       })
       .then((response) => response.json())
       .then((responseData) => {
-        // console.log(responseData);
         this.setState({ reviews: responseData })
-        // console.log(this.state);
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -97,7 +97,6 @@ class PodcastShowContainer extends Component {
     }
 
     let sortedReviews = this.state.reviews.sort((a, b) => b.total_votes - a.total_votes)
-    console.log(sortedReviews);
 
     let reviewsHeader;
 
@@ -131,23 +130,30 @@ class PodcastShowContainer extends Component {
     })
 
     return(
-      <div>
+      <div className="fade-in">
         <div className="row-one"></div>
         <div className="row">
-          <div className="panel show-header">
+          <HomeButton />
+        </div>
+        <div className="row">
+          <div className="small-12 columns panel show-header">
             <h1>{this.state.podcast.title}</h1>
             <div className="avg-rating">Average rating: {averageRating}</div>
             <div className="show-details">Creators: {this.state.creators}</div>
             <div className="show-details">Description: {this.state.podcast.description}</div>
             <div className="show-link"><a href={this.state.podcast.url} target="_blank">{this.state.podcast.url}</a></div>
           </div>
-          <div className="small-11 medium-5 large-2 panel new-review">
-            <Link
-              to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
-              state: { title: this.state.podcast.title }} }>
+        </div>
+        <div className="row">
+          <Link
+            to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
+            state: { title: this.state.podcast.title }} }>
+            <p className="small-12 medium-10 large-8 small-centered panel new-review">
               Add a new review for {this.state.podcast.title}
-            </Link>
-          </div>
+            </p>
+          </Link>
+        </div>
+        <div className="row">
           <div>
             <div className="reviews-header">{reviewsHeader}</div>
             <h3>{ratings}</h3>

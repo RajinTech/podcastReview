@@ -1,9 +1,18 @@
+.invisible {
+  visibility: hidden;
+}
+
 @keyframes slide-right {
-  from { width: 1px }
+  from { width: 20% }
   to { width: 100% }
 }
 
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 0.5s;
 }
