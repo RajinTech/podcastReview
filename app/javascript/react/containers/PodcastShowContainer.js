@@ -62,23 +62,24 @@ class PodcastShowContainer extends Component {
 
     return(
       <div>
-        <div className="rowOne"></div>
+        <div className="row-one"></div>
         <div className="row">
-          <div className="panel">
+          <div className="panel show-header">
             <h1>{this.state.podcast.title}</h1>
             <h3>Creators: {this.state.creators}</h3>
             <h3>Description: {this.state.podcast.description}</h3>
-            <h3>URL: {this.state.podcast.url}</h3>
+            <h3>{this.state.podcast.url}</h3>
           </div>
-          <div>
+          <div className="small-11 medium-5 large-2 panel new-review">
             <Link
               to={{pathname: `/podcasts/${this.props.params.id}/reviews/new`,
               state: { title: this.state.podcast.title }} }>
               Add a new review for {this.state.podcast.title}
             </Link>
           </div>
+          <div className="bar"></div>
           <div>
-            <h1>Reviews</h1>
+            <div className="reviews-header">Reviews</div>
             <h3>{ratings}</h3>
           </div>
         </div>

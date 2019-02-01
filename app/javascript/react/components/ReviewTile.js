@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const ReviewTile = props => {
   return(
-    <div className="panel">
+    <div className="panel review">
       <div>
         <h3>Rating: {props.rating}</h3>
         <h3>Binge Value: {props.bingeVal}</h3>

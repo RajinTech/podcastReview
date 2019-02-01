@@ -1,0 +1,51 @@
+@import '_colors';
+
+.form-header {
+  font-size: 2rem;
+  color: $mustard;
+  font-weight: bold;
+}
+
+.form-header-devise {
+  font-size: 2rem;
+  color: $turquoise-blue;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  border-radius: 6px;
+  font-size: 1.2rem;
+}
+
+label {
+  font-size: 1.5rem;
+  color: $emperor;
+}
+
+form {
+  border-radius: 12px;
+}
+
+textarea {
+  border-radius: 6px;
+  font-size: 1.2rem;
+}
+
+.button.form-submit {
+  border-radius: 6px;
+  background-color: $brilliant-rose;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.button.form-submit:hover {
+  background-color: $turquoise-blue;
+}
+
+.row.sign-up {
+  color: $rose;
+  font-size: 1.5rem;
+  background-color: $quarter-pearl-lusta;
+  padding: 8px;
+  border-radius: 12px;
+}

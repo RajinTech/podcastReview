@@ -78,7 +78,7 @@ class ReviewFormContainer extends Component {
     return(
       <div className="row">
         <br></br>
-        <h3>Submit a New Review for {this.props.location.state.title}</h3>
+        <div className="form-header">Submit a New Review for {this.props.location.state.title}</div>
         <form onSubmit={this.handleSubmit} className="panel">
 
           <RatingField
@@ -111,7 +111,7 @@ class ReviewFormContainer extends Component {
             onChange={this.handleTextChange}
             value={this.state.comment}
             />
-          <input className="button" type="submit" value="Submit"/>
+          <input className="button form-submit" type="submit" value="Submit"/>
         </form>
       </div>
     )

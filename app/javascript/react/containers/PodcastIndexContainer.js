@@ -35,10 +35,13 @@ class PodcastIndexContainer extends Component {
 
     return(
       <div>
-        <div className="button secondary">
-          <Link to={'/podcasts/new'}>Add a New Podcast</Link>
+        <div className="row-one"></div>
+        <div className="row">
+          <div className="small-11 medium-5 large-2 panel new-podcast">
+            <Link to={'/podcasts/new'}>Add a New Podcast</Link>
+          </div>
         </div>
-        <div>
+        <div className="row">
           {podcasts}
         </div>
       </div>
