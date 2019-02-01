@@ -17,7 +17,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       returned_json = JSON.parse(response.body)
 
       returned_json.each_with_index do |review, i|
-        puts review
         expect(review).to include( 'id' => i+1 )
         expect(review).to include( 'rating' => i+1 )
         expect(review).to include( 'scores' => {
