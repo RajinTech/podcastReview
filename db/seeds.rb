@@ -1,12 +1,13 @@
 user_list = [
-  [ "germany@gmail.com", "germany", "germany" ],
-  [ "france@gmail.com", "france", "france" ],
-  [ "belgium@gmail.com", "belgium", "belgium" ],
-  [ "netherlands@gmail.com", "netherlands", "netherlands" ]
+  [ "johndoe@gmail.com", "tested", "tested" ],
+  [ "janedoe@gmail.com", "tested", "tested" ],
+  [ "johnsmith@gmail.com", "tested", "tested" ],
+  [ "janesmith@gmail.com", "tested", "tested" ]
 ]
 user_list.each do |email, password, password_confirmation|
   User.create( email: email, password: password, password_confirmation: password_confirmation )
 end
+
 podcast_list = [
   [ "JavaScript Jabber", "Devchat.tv has a mission to empower programmers to change the world by helping them better understand the technologies, tools, processes, and possibilities of their craft.", "https://devchat.tv/js-jabber/" ],
   [ "Hardcore History", "History revisited", "https://www.dancarlin.com/hardcore-history-series/" ],
@@ -27,78 +28,85 @@ podcast_list.each do |title, description, url|
   Podcast.create( title: title, description: description, url: url )
 end
 review_list = [
-  [ 1, "my ears hurt", 2, 3, 4, 1, 1 ],
-  [ 2, "bad", 2, 3, 4, 2, 1 ],
-  [ 3, "not worth it", 2, 3, 4, 3, 1 ],
-  [ 4, "good", 2, 3, 4, 4, 1 ],
-  [ 5, "bad", 2, 3, 4, 5, 1 ],
-  [ 1, "good", 2, 3, 4, 6, 1 ],
-  [ 2, "lousey", 2, 3, 4, 7, 1 ],
-  [ 3, "bad", 2, 3, 4, 8, 1 ],
-  [ 4, "good", 2, 3, 4, 9, 1 ],
-  [ 5, "Didnt like the speaker but great content!", 2, 3, 4, 10, 1 ],
-  [ 1, "bad", 2, 3, 4, 11, 1 ],
-  [ 2, "good", 5, 4, 4, 12, 1 ],
-  [ 3, "", 2, 3, 4, 13, 1 ],
-  [ 4, "bad", 2, 3, 4, 14, 1 ],
-  [ 5, "good", 5, 5, 4, 1, 2 ],
-  [ 1, "lousey", 2, 3, 4, 2, 2 ],
-  [ 2, "would definitely reccomend", 2, 1, 4, 3, 2 ],
-  [ 3, "cool content, so so delivery", 2, 3, 4, 4, 2 ],
-  [ 4, "good", 2, 2, 4, 5, 2 ],
-  [ 5, "Was super educational", 2, 3, 4, 6, 2 ],
-  [ 1, "good", 5, 3, 4, 7, 2 ],
-  [ 2, "lousey", 2, 3, 4, 8, 2 ],
-  [ 3, "wonderful", 2, 3, 1, 9, 2 ],
-  [ 4, "good", 4, 3, 4, 10, 2 ],
-  [ 5, "great listen!", 2, 3, 4, 11, 2 ],
-  [ 1, "bad", 2, 3, 4, 12, 2 ],
-  [ 2, "boring", 3, 4, 4, 13, 2 ],
-  [ 3, "lousey", 2, 3, 1, 14, 2 ],
-  [ 4, "bad", 2, 3, 4, 1, 3 ],
-  [ 5, "handles like a dream", 5, 5, 4, 2, 3 ],
-  [ 1, "would not reccomend", 2, 3, 4, 3, 3 ],
-  [ 2, "bad", 2, 3, 4, 4, 3 ],
-  [ 3, "good", 5, 2, 4, 5, 3 ],
-  [ 4, "lousey", 2, 3, 1, 6, 3 ],
-  [ 5, "bad", 2, 3, 4, 7, 3 ],
-  [ 1, "good", 5, 2, 4, 8, 3 ],
-  [ 2, "was not into the host", 2, 3, 4, 9, 3 ],
-  [ 3, "bad", 2, 3, 4, 10, 3 ],
-  [ 4, "good", 4, 1, 1, 11, 3 ],
-  [ 5, "genius", 3, 3, 4, 12, 3 ],
-  [ 1, "bad", 2, 3, 4, 13, 3 ],
-  [ 2, "good", 3, 1, 4, 14, 3 ],
-  [ 3, "best way to pass time on the train", 2, 1, 4, 1, 4 ],
-  [ 4, "bad", 2, 3, 4, 2, 4 ],
-  [ 5, "good", 3, 2, 4, 3, 4 ],
-  [ 1, "lousey", 2, 3, 4, 4, 4 ],
-  [ 2, "lame", 3, 3, 4, 5, 4 ],
-  [ 3, "good", 2, 4, 4, 6, 4 ],
-  [ 4, "the best", 2, 1, 4, 7, 4 ],
-  [ 5, "bad", 3, 3, 4, 8, 4 ],
-  [ 1, "good", 2, 5, 4, 9, 4 ],
-  [ 2, "couldnt be less impressed", 2, 3, 4, 10, 4 ],
-  [ 3, "bad", 3, 3, 4, 11, 4 ],
-  [ 4, "good", 2, 5, 4, 12, 4 ],
-  [ 5, "lousey", 2, 3, 4, 13, 4 ],
-  [ 1, "bad", 3, 1, 4, 14, 4 ]
+  [ 1, "Wasn't for me.", 2, 3, 4, 1, 1 ],
+  [ 2, "Didn't love it.", 2, 3, 4, 2, 1 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 4, 3, 1 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 3, 4, 4, 1 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 2, 3, 4, 5, 1 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 6, 1 ],
+  [ 2, "Didn't love it.", 2, 3, 4, 7, 1 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 4, 8, 1 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 3, 4, 9, 1 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 2, 3, 4, 10, 1 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 11, 1 ],
+  [ 2, "Didn't love it.", 5, 4, 4, 12, 1 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 4, 13, 1 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 3, 4, 14, 1 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 5, 5, 4, 1, 2 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 2, 2 ],
+  [ 2, "Didn't love it.", 2, 1, 4, 3, 2 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 4, 4, 2 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 2, 4, 5, 2 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 2, 3, 4, 6, 2 ],
+  [ 1, "Wasn't for me.", 5, 3, 4, 7, 2 ],
+  [ 2, "Didn't love it.", 2, 3, 4, 8, 2 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 1, 9, 2 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 4, 3, 4, 10, 2 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 2, 3, 4, 11, 2 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 12, 2 ],
+  [ 2, "Didn't love it.", 3, 4, 4, 13, 2 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 1, 14, 2 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 3, 4, 1, 3 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 5, 5, 4, 2, 3 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 3, 3 ],
+  [ 2, "Didn't love it.", 2, 3, 4, 4, 3 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 5, 2, 4, 5, 3 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 3, 1, 6, 3 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 2, 3, 4, 7, 3 ],
+  [ 1, "Wasn't for me.", 5, 2, 4, 8, 3 ],
+  [ 2, "Didn't love it.", 2, 3, 4, 9, 3 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 3, 4, 10, 3 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 4, 1, 1, 11, 3 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 3, 3, 4, 12, 3 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 13, 3 ],
+  [ 2, "Didn't love it.", 3, 1, 4, 14, 3 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 1, 4, 1, 4 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 3, 4, 2, 4 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 3, 2, 4, 3, 4 ],
+  [ 1, "Wasn't for me.", 2, 3, 4, 4, 4 ],
+  [ 2, "Didn't love it.", 3, 3, 4, 5, 4 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 2, 4, 4, 6, 4 ],
+  [ 4, "tReally good podcast -- wish they would release more episodes.", 2, 1, 4, 7, 4 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 3, 3, 4, 8, 4 ],
+  [ 1, "Wasn't for me.", 2, 5, 4, 9, 4 ],
+  [ 2, "Didn't love it.", 2, 3, 4, 10, 4 ],
+  [ 3, "Not bad, but I think there are better podcasts in this genre. Worth a listen.", 3, 3, 4, 11, 4 ],
+  [ 4, "Really good podcast -- wish they would release more episodes.", 2, 5, 4, 12, 4 ],
+  [ 5, "Love this podcast! Have been listening every day for a few months. Highly recommend you get into it!", 2, 3, 4, 13, 4 ],
+  [ 1, "Was not a fan.", 3, 1, 4, 14, 4 ]
 ]
 review_list.each do |rating, comment, binge_val, educational_val, entertainment_val, podcast_id, user_id|
-  Review.create( rating: rating, comment: comment, binge_val: binge_val, educational_val: educational_val, entertainment_val: entertainment_val, podcast_id: podcast_id, user_id: user_id )
+  Review.create!( rating: rating, comment: comment, binge_val: binge_val, educational_val: educational_val, entertainment_val: entertainment_val, podcast_id: podcast_id, user_id: user_id )
 end
-creator_list = [
-   "Todd Bronco",
-   "Artemis Steer",
-   "Bruce Mang",
-   "Remington Fox",
-   "Gabi Gomez",
-   "Will Clinton",
-   "Dan Carlin",
-   "Malcom Gladware",
-   "Bill Williams"
+
+creators = [
+  "Joe Eames",
+  "Dan Carlin",
+  "The Mission",
+  "The Mission",
+  "Catori Langley",
+  "PIEGUYRULZ",
+  "Marie Kondo",
+  "Dennis Fisher",
+  "Dr. Jeremy Waisome",
+  "Lukas Harkins",
+  "PWTorch",
+  "Nicole Dei",
+  "Nouf Hakeem",
+  "Matt and Dave"
 ]
-creator_list.each do |name|
+
+creators.each do |name|
   Creator.create( name: name)
 end
 podcast_creatorship_list = [
@@ -124,9 +132,11 @@ podcast_creatorship_list = [
   [ 6, 7],
   [ 7, 9]
  ]
-podcast_creatorship_list.each do |podcast_id, creator_id|
-  PodcastCreatorship.create( podcast_id: podcast_id, creator_id: creator_id)
-end
+
+ (podcasts_list.length - 1).times do |i|
+   PodcastCreatorship.create( podcast_id: i, creator_id: i)
+ end
+
 vote_list = [
   [ 1, 1, 1],
   [ 1, 2, 1],
